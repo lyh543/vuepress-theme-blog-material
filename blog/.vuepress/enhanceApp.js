@@ -10,6 +10,6 @@ export default ({
                 }) => {
   Vue.use(Vuetify);
   options.vuetify = new Vuetify({})
-  window.site = Vue.site;
-  window.page = Vue.page;
+  // window.site = Vue.site;
+  // window.page = Vue.page;
 };

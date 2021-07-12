@@ -31,10 +31,11 @@
         </div>
       </template>
 
-      <ThemeSettings />
-      <div class="mb-3 mt-4 mx-n3">
-        <v-divider />
-      </div>
+      <!--      <ThemeSettings />-->
+      <!--      <div class="mb-3 mt-4 mx-n3">-->
+      <!--        <v-divider />-->
+      <!--      </div>-->
+      <!--      TODO: 加上主题设置  -->
 
       <SettingsTips :show="show" />
     </v-container>

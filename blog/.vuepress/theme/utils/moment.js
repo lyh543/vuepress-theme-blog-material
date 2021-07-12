@@ -8,5 +8,5 @@ moment.prototype.toChinese = function() {
 moment.prototype.dateNumber = function() {
   return Number(this.format('YYYYMMDD'));
 }
-window.moment = moment;
+// window.moment = moment;
 export default moment;

@@ -27,7 +27,7 @@
       dense
       nav
     >
-<!--      ripple-->
+      <!--      ripple-->
       <v-list-item-group color="primary">
         <template v-for="item in items">
           <v-list-item

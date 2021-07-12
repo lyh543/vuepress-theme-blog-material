@@ -27,8 +27,7 @@
 
     <v-divider />
 
-    <v-card-text class="presenter-list-area">
-    </v-card-text>
+    <v-card-text class="presenter-list-area" />
   </v-card>
 </template>
 
