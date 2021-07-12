@@ -1,7 +1,9 @@
 <!-- 全局布局，用于添加 header 和 footer -->
 <template>
   <v-app>
-    <Header />
+    <ClientOnly>
+      <Header />
+    </ClientOnly>
     <DefaultGlobalLayout id="global-layout" />
     <Footer />
   </v-app>
