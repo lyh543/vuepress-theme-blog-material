@@ -1,7 +1,7 @@
 const path = require("path");
 module.exports = {
 
-  title: 'vuepress-theme-material-vuetify',
+  title: 'vuepress-theme-blog-vuetify',
   description: '正在开发中的 Material Design 风格 Vuepress',
 
   port: 4000,

@@ -1,4 +1,4 @@
-# vuepress-theme-material-vuetify
+# vuepress-theme-blog-vuetify
 
 Material VuePress Blog Theme Powered By Vuetify.
 
