@@ -38,6 +38,8 @@ module.exports = themeConfig => {
     alias: {
       fonts: path.resolve(__dirname, "fonts"),
       '@theme': path.resolve(__dirname, '.'),
+      '@config': path.resolve(__dirname, '../config.js'),
+      '@public': path.resolve(__dirname, '../public'),
     },
 
     // Generate summary.
@@ -75,6 +77,5 @@ module.exports = themeConfig => {
       }
     }
   };
-
   return config;
 };

@@ -22,9 +22,9 @@
           class="ui-post-title"
           itemprop="name headline"
         >
-          <NavLink :link="page.path">
+          <a :href="page.path">
             {{ page.title }}
-          </NavLink>
+          </a>
         </header>
 
         <client-only v-if="page.excerpt">

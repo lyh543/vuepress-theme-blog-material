@@ -9,32 +9,6 @@ export function normalize(path) {
     .replace(extRE, '')
 }
 
-export function isExternal(path) {
-  return outboundRE.test(path)
-}
-
-export function isMailto(path) {
-  return /^mailto:/.test(path)
-}
-
-export function isTel(path) {
-  return /^tel:/.test(path)
-}
-
-export function ensureExt(path) {
-  if (isExternal(path)) {
-    return path
-  }
-  const hashMatch = path.match(hashRE)
-  const hash = hashMatch ? hashMatch[0] : ''
-  const normalized = normalize(path)
-
-  if (endingSlashRE.test(normalized)) {
-    return path
-  }
-  return normalized + '.html' + hash
-}
-
 /*
  * find parent vm by ref
  * @param {String} ref

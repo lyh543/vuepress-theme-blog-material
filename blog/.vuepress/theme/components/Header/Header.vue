@@ -1,6 +1,6 @@
 <!-- 整合侧边栏的抽屉、顶栏 -->
 <template>
-  <div id="header">
+  <div>
     <NavigationDrawer :toggle-event="toggleNavigation" />
     <AppBar
       @toggleNavigation="toggleNavigation=!toggleNavigation"
@@ -29,9 +29,3 @@ export default {
   })
 };
 </script>
-
-<style>
-#header {
-  margin-bottom: 250px;
-}
-</style>

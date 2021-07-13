@@ -35,6 +35,7 @@
     "@vuepress/plugin-search": "^1.5.4",
     "@vuepress/theme-blog": "^2.3.3",
     "dayjs": "^1.8.19",
+    "entities": "^1.1.1",
     "moment": "^2.29.1",
     "remove-markdown": "^0.3.0",
     "vue-feather-icons": "^4.21.0",

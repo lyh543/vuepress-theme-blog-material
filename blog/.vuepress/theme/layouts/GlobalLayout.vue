@@ -4,8 +4,12 @@
     <ClientOnly>
       <Header />
     </ClientOnly>
-    <DefaultGlobalLayout id="global-layout" />
-    <Footer />
+    <v-main id="main-content">
+      <DefaultGlobalLayout id="global-layout" />
+    </v-main>
+    <ClientOnly>
+      <Footer />
+    </ClientOnly>
   </v-app>
 </template>
 
@@ -36,7 +40,9 @@ export default {
 </script>
 
 <style>
-#vuepress-theme-blog__global-layout {
-  word-wrap: break-word
+#global-layout {
+  word-wrap: break-word;
+  /*margin-top: 300px;*/
+  /*margin-bottom: 128px;*/
 }
 </style>

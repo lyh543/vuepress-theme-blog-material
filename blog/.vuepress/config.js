@@ -3,13 +3,15 @@ module.exports = {
 
   title: 'vuepress-theme-blog-vuetify',
   description: '正在开发中的 Material Design 风格 Vuepress',
+  author: 'lyh543',
+  email: 'lyh543@outlook.com',
 
   port: 4000,
   dest: 'dist',
   // todo: 搞个新的 public 文件夹
 
   head: [
-    ['link', {rel: 'icon', href: '/favicon.png'}]
+    ['link', {rel: 'icon', href: '/img/favicon.png'}]
   ],
 
   markdown: {
@@ -51,75 +53,31 @@ module.exports = {
   themeConfig: {
     dateFormat: 'YYYY-MM-DD',
 
+
+    // nav 和 footer.contact 的图标来源：https://materialdesignicons.com/
+    // 博客内链接请使用 to，外部链接请使用 href
     nav: [
-      {text: 'Blog', link: '/'},
-      {text: 'Tags', link: '/tag/'},
-      {text: 'Archive', link: '/archive/'},
+      {text: '博客', iconOn: 'mdi-home', iconOff: 'mdi-home-outline', to: '/'},
+      {text: '标签', iconOn: 'mdi-tag-multiple', iconOff: 'mdi-tag-multiple-outline', to: '/tag/'},
+      {text: '时间线', iconOn: 'mdi-timeline', iconOff: 'mdi-timeline-outline', to: '/timeline/'},
+      {text: '关于我', iconOn: 'mdi-account', iconOff: 'mdi-account-outline', to: '/about/'},
     ],
 
     footer: {
       contact: [
-        {
-          type: 'github',
-          link: 'https://github.com/vuepressjs/vuepress-theme-blog',
-        },
-        {
-          type: 'gitlab',
-          link: '/',
-        },
-        {
-          type: 'instagram',
-          link: '/',
-        },
-        {
-          type: 'linkedin',
-          link: '/',
-        },
-        {
-          type: 'mail',
-          link: '/',
-        },
-        {
-          type: 'messenger',
-          link: '/',
-        },
-        {
-          type:'music',
-          link:'/'
-        },
-        {
-          type: 'phone',
-          link: '/',
-        },
-        {
-          type: 'twitter',
-          link: 'https://twitter.com/vuepressjs',
-        },
-        {
-          type:'video',
-          link:'/'
-        },
-        {
-          type: 'web',
-          link: '/',
-        },
-        {
-          type: 'youtube',
-          link: '/'
-        }
+        {icon: 'mdi-github', href: 'https://github.com/lyh543/vuepress-theme-blog-vuetify/'},
+        {icon: 'mdi-web', href: 'https://vuepress-theme-blog-vuetify.lyh543.cn/'},
+        {icon: 'mdi-email', href: 'mailto:lyh543@outlook.com'},
+        {icon: 'mdi-sina-weibo', href: 'https://weibo.com/'},
+        {icon: 'mdi-wechat', href: 'https://weixin.qq.com/'},
+        {icon: 'mdi-qqchat', href: 'https://qq.com/'},
+        {icon: '/img/bilibili.svg', iconDark: '/img/bilibili_dark.svg', href: 'https://bilibili.com/'},
       ],
       copyright: [
-        {
-          text: 'lyh543 © 2019 - 2021',
-        },
-        {
-          text: '蜀ICP备19034464号',
-          link: 'https://beian.miit.gov.cn/'
-        },
-        {
-          text: '署名 - 非商业性 - 相同方式共享 4.0 国际协议',
-          link: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh',
-        },
+        'lyh543 © 2019 - 2021',
+        '[蜀ICP备19034464号](https://beian.miit.gov.cn/)',
+        '[署名 - 非商业性 - 相同方式共享 4.0 国际协议](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)',
+        'Theme [vuepress-theme-blog-vuetify](https://github.com/lyh543/vuepress-theme-blog-vuetify/)'
       ],
     },
 
@@ -185,11 +143,6 @@ module.exports = {
 
 
   configureWebpack: {
-    // resolve: {
-    //   alias: {
-    //     '@theme': path.resolve(__dirname, 'theme'),
-    //   }
-    // },
     module: {
       rules: [
         {

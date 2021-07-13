@@ -6,20 +6,24 @@
     fixed
     app
   >
-    <!--      ripple-->
-    <v-list-item
-      class="px-2"
-      @click="gotoDebug"
-    >
-      <v-list-item-avatar>
-        <v-img :src="iconPath" />
-      </v-list-item-avatar>
-      <v-list-item-content>
-        <v-list-item-title style="font-size:15px">
-          {{ $site.title }}
-        </v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
+    <v-list>
+      <v-list-item class="px-5">
+        <v-list-item-avatar size="80">
+          <v-img :src="avatar_url" />
+        </v-list-item-avatar>
+      </v-list-item>
+
+      <v-list-item :href="'mailto:' + email">
+        <v-list-item-content>
+          <v-list-item-title class="text-h6">
+            {{ author }}
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            {{ email }}
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
 
     <v-divider />
 
@@ -27,7 +31,6 @@
       dense
       nav
     >
-      <!--      ripple-->
       <v-list-item-group color="primary">
         <template v-for="item in items">
           <v-list-item
@@ -42,7 +45,7 @@
               <v-icon>{{ item.value ? (item.iconOn || item.iconOff) : item.iconOff }}</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
+              <v-list-item-title>{{ item.text }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </template>
@@ -53,6 +56,9 @@
 
 
 <script>
+import {author, email} from '@config';
+import avatar_url from '@public/img/avatar.png';
+
 export default {
   props: {
     toggleEvent: {
@@ -62,74 +68,14 @@ export default {
   },
   data() {
     return {
+      author,
+      email,
+      avatar_url,
+      items: [],
       clickTotal: 0,
       latestClick: 0,
-      iconPath: '/logo.png',
       show: null,   //在移动设备上关闭，在桌面环境下打开
       settingsOn: false,
-      items: [
-        {
-          title: '沙龙',
-          iconOn: 'mdi-view-dashboard',
-          iconOff: 'mdi-view-dashboard-outline',
-          to: '/activity',
-          value: false,
-        },
-        {
-          title: '用户',
-          iconOn: 'mdi-account-multiple',
-          iconOff: 'mdi-account-multiple-outline',
-          to: '/user',
-          value: false,
-        },
-        {
-          title: '相册',
-          iconOn: 'mdi-image-multiple',
-          iconOff: 'mdi-image-multiple-outline',
-          to: '/gallery',
-          value: false,
-        },
-        {
-          title: 'Onedrive',
-          iconOn: 'mdi-cloud',
-          iconOff: 'mdi-cloud-outline',
-          href: 'https://demo4c-my.sharepoint.com/:f:/g/personal/uestcmsc_demo4c_onmicrosoft_com/Eq4PHVelleJCpDcY2HqjafcB-y6J0cPalW0Pn6J0wBSaXw?e=RJNaaB',
-          requireLogin: true,
-          value: false,
-        },
-        {
-          title: 'RSS',
-          iconOn: 'mdi-rss',
-          iconOff: 'mdi-rss',
-          href: '/feed',
-          value: false,
-        },
-      ],
-      itemsAdmin: [
-        {
-          title: 'Onedrive 状态',
-          iconOn: 'mdi-sync',
-          iconOff: 'mdi-cached',
-          to: '/cloud/status',
-          value: false,
-        },
-        {
-          title: 'Onedrive 管理',
-          iconOn: 'mdi-lock',
-          iconOff: 'mdi-lock-outline',
-          href: 'https://demo4c-my.sharepoint.com/personal/uestcmsc_demo4c_onmicrosoft_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fuestcmsc%5Fdemo4c%5Fonmicrosoft%5Fcom%2FDocuments%2Fcloud%2Fpublic',
-          value: false,
-        },
-
-        {
-          title: '后台管理',
-          iconOn: 'mdi-account-cog',
-          iconOff: 'mdi-account-cog-outline',
-          href: '/admin/',
-          requireSuperuser: true,
-          value: false,
-        },
-      ]
     };
   },
 
@@ -139,8 +85,16 @@ export default {
     }
   },
 
-  methods: {
+  // mount 后加载导航栏的选项
+  mounted() {
+    let items = this.$themeConfig.nav;
+    items.forEach(element => {
+      element.value = false;
+    });
+    this.items = items;
+  },
 
+  methods: {
     // 连续点击五次跳转到 debug 页面
     gotoDebug() {
       let now = Date.now();

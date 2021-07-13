@@ -19,7 +19,7 @@ tags:
 
 ![相对路径图片](../../images/vczh.png)
 
-![绝对路径图片](/favicon.png)
+![绝对路径图片](/img/favicon.png)
 
 ## 链接
 
