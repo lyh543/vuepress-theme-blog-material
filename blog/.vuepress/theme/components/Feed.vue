@@ -35,13 +35,3 @@ export default {
   },
 }
 </script>
-
-<style lang="stylus">
-.feed
-  display flex
-  align-items center
-  color inherit
-
-  &:hover
-    color $accentColor
-</style>

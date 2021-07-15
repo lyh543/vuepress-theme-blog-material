@@ -64,12 +64,3 @@ export default {
   },
 }
 </script>
-
-<style lang="stylus">
-.sticker
-  position fixed
-
-  &.stick-float
-    top auto
-    position absolute
-</style>

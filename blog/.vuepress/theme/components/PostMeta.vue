@@ -79,28 +79,3 @@ export default {
   },
 }
 </script>
-
-<style lang="stylus">
-.post-meta
-  &-tags
-    display flex
-    flex-wrap wrap
-    list-style none
-    overflow hidden
-    padding 0
-    margin 20px 0
-
-    > li
-      margin-bottom 10px
-
-  > div
-    display inline-flex
-    line-height 12px
-    font-size 12px
-    margin-right 20px
-
-  svg
-    margin-right 5px
-    width 14px
-    height 14px
-</style>
