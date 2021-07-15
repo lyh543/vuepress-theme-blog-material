@@ -54,7 +54,8 @@ module.exports = {
     dateFormat: 'YYYY-MM-DD',
 
 
-    // nav 和 footer.contact 的图标来源：https://materialdesignicons.com/
+    // nav 和 footer.contact 的图标默认来源：https://materialdesignicons.com/
+    // footer.contact 也可以使用自己的图标（请仿造 bilibili 的格式）
     // 博客内链接请使用 to，外部链接请使用 href
     nav: [
       {text: '博客', iconOn: 'mdi-home', iconOff: 'mdi-home-outline', to: '/'},
@@ -74,10 +75,9 @@ module.exports = {
         {icon: '/img/bilibili.svg', iconDark: '/img/bilibili_dark.svg', href: 'https://bilibili.com/'},
       ],
       copyright: [
-        'lyh543 © 2019 - 2021',
-        '[蜀ICP备19034464号](https://beian.miit.gov.cn/)',
-        '[署名 - 非商业性 - 相同方式共享 4.0 国际协议](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)',
-        'Theme [vuepress-theme-blog-vuetify](https://github.com/lyh543/vuepress-theme-blog-vuetify/)'
+        {text: 'lyh543 © 2019 - 2021'},
+        {text: '蜀ICP备19034464号', link: 'https://beian.miit.gov.cn/'},
+        {text: '署名 - 非商业性 - 相同方式共享 4.0 国际协议', link: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'},
       ],
     },
 

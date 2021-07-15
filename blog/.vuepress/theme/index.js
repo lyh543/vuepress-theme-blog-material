@@ -36,8 +36,7 @@ module.exports = themeConfig => {
         : "Pagination"
     },
     alias: {
-      fonts: path.resolve(__dirname, "fonts"),
-      '@theme': path.resolve(__dirname, '.'),
+      '@style': path.resolve(__dirname, 'styles'),
       '@config': path.resolve(__dirname, '../config.js'),
       '@public': path.resolve(__dirname, '../public'),
     },

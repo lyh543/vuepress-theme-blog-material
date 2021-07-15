@@ -281,27 +281,33 @@
 
       <!--   第二栏是版权   -->
       <v-card-text>
-        <template v-for="({text, link = ''}, index) in copyright">
-          <span
-            v-if="index > 0"
-            :key="index"
-          > | </span>
+        <template v-for="{text, link = ''} in copyright">
           <a
             v-if="link.length > 0"
             :key="text"
             :href="link"
-          >
-            <span>
-              {{ text }}
-            </span>
-          </a>
+            target="_blank"
+            class="footer-link"
+            v-text="text"
+          />
           <span
             v-else
             :key="text"
-          >
-            {{ text }}
-          </span>
+            class="footer-text"
+            v-text="text"
+          />
+          |
         </template>
+        <span class="footer-text">
+          Theme
+          <a
+            href="https://github.com/lyh543/vuepress-theme-blog-vuetify/"
+            target="_blank"
+            class="footer-link"
+          >
+            vuepress-theme-blog-vuetify
+          </a>
+        </span>
       </v-card-text>
     </v-card>
   </v-footer>
@@ -310,19 +316,33 @@
 <script>
 
 export default {
-  data(){
+  data() {
     return {
-    contact: [],
-    copyright: []
-  }
+      contact: [],
+      copyright: []
+    }
   },
 
-  mounted() {
+  created() {
     const {contact, copyright} = this.$themeConfig.footer;
     this.contact = contact;
     this.copyright = copyright;
   }
-
-
 }
 </script>
+
+<style lang="stylus">
+.footer-text
+  color: rgba(0, 0, 0, 0.35)
+
+.footer-link {
+  color: rgba(0, 0, 0, 0.5) !important;
+  text-decoration: none;
+  font-weight: 400
+}
+
+.footer-link:hover {
+  color: rgb(25, 118, 210) !important;
+}
+
+</style>

@@ -35,12 +35,12 @@ export default {
   props: {
     // 移动设备的列数
     cols: {
-      type: Number | String,
+      type: [Number, String],
       default: 12
     },
     // PC 上的列数
     md: {
-      type: Number | String,
+      type: [Number, String],
       default: 8
     }
   }

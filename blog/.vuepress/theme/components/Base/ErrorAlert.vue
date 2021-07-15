@@ -45,7 +45,7 @@ export default {
       default: 'error'
     },
     msg: {
-      type: String | Object,
+      type: [String, Object],
       default: '哎呀，出错了'
     }
   }

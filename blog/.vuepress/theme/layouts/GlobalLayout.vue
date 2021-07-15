@@ -7,9 +7,7 @@
     <v-main id="main-content">
       <DefaultGlobalLayout id="global-layout" />
     </v-main>
-    <ClientOnly>
-      <Footer />
-    </ClientOnly>
+    <Footer />
   </v-app>
 </template>
 

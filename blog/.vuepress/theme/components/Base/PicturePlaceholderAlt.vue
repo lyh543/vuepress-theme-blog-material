@@ -12,7 +12,7 @@
 export default {
   props: {
     aspectRatio: {
-      type: String | Number,
+      type: [String, Number],
       default: ''
     }
   }

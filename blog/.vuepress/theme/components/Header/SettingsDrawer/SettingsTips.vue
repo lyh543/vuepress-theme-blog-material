@@ -16,11 +16,8 @@ export default {
   },
   data: () => ({
     tips: [
-      `阮薇薇 ${new Date().getFullYear() - 2019} 岁啦~`,
-      '听说不使用梯子反而会变快喔~',
       '怎么还有一堆 bug 没有修啊啊啊啊',
-      'tljj 女装赛高！',
-      '你很菜的时候会焦虑 当你像我这么强的时候就不会了'
+      '这里是彩蛋~'
     ],
     index: 0,
   }),
@@ -37,3 +34,18 @@ export default {
   }
 }
 </script>
+
+<style>
+.bottom-tips {
+  text-align: center;
+  font-size: 14px;
+}
+
+.theme--light .bottom-tips {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.theme--dark .bottom-tips {
+  color: rgba(255, 255, 255, 0.4);
+}
+</style>
