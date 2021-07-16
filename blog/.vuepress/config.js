@@ -1,4 +1,5 @@
 const path = require("path");
+
 module.exports = {
 
   title: 'vuepress-theme-blog-vuetify',
@@ -61,6 +62,7 @@ module.exports = {
       {text: '博客', iconOn: 'mdi-home', iconOff: 'mdi-home-outline', to: '/'},
       {text: '标签', iconOn: 'mdi-tag-multiple', iconOff: 'mdi-tag-multiple-outline', to: '/tag/'},
       {text: '时间线', iconOn: 'mdi-timeline', iconOff: 'mdi-timeline-outline', to: '/timeline/'},
+      {text: 'RSS', iconOn: 'mdi-rss', iconOff: 'mdi-rss', href: '/feed.atom'},
       {text: '关于我', iconOn: 'mdi-account', iconOff: 'mdi-account-outline', to: '/about/'},
     ],
 
@@ -127,9 +129,9 @@ module.exports = {
     feed: {
       canonical_base: 'https://blog.lyh543.cn/',
       feeds: {
-        rss: {enable: true},
-        atom: {enable: true},
-        json: {enable: true},
+        rss: {enable: true},    // rss.xml
+        atom: {enable: true},   // feed.atom
+        json: {enable: true},   // feed.json
       }
     },
 

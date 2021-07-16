@@ -1,0 +1,15 @@
+@import "vuepress-theme-blog/index.styl"
+
+$contentClass = '.v-application'
+
+{$contentClass}
+  a
+    border-bottom: dotted 1px;
+    text-decoration: none;
+    color: $color-primary-transparent;
+
+    &:hover
+      color: $color-primary;
+
+    &.v-btn, &.v-list-item
+      border-bottom: none;
