@@ -22,18 +22,6 @@ export default {
     Header,
     Footer,
   },
-
-  data() {
-    return {
-      isMobileHeaderOpen: false,
-    }
-  },
-
-  mounted() {
-    this.$router.afterEach(() => {
-      this.isMobileHeaderOpen = false
-    })
-  },
 }
 </script>
 

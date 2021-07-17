@@ -87,10 +87,13 @@ module.exports = {
     directories:[
       {
         id: 'post',
+        title: null,  // if keep null, navbar will show this.$siteTitle
         dirname: '_posts',
+        layout: 'PostList',
+        itemLayout: 'Post',
         path: '/',
-        itemPermalink: ':regular', // Permalink for matched pages.
-        pagination: { // Pagination behavior
+        itemPermalink: ':regular',
+        pagination: {
           lengthPerPage: 10,
         },
       },
@@ -99,7 +102,7 @@ module.exports = {
     // Ref: https://vuepress-theme-blog.ulivz.com/config/#frontmatters
     frontmatters: [
       {
-        id: "tag",
+        id: "tags",
         keys: ['tag', 'tags'],
         path: '/tag/',
         // todo: 去掉 vue-route 对 tags 的警告

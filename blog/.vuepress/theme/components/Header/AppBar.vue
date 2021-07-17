@@ -51,7 +51,7 @@
         <v-app-bar-title
           style="padding-left: 20px; overflow: visible"
           :style="appbarTitleStyle"
-          v-text="$site.title"
+          v-text="$page.frontmatter.title || $siteTitle"
         />
       </v-fade-transition>
 
