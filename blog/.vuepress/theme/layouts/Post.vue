@@ -6,12 +6,6 @@
       itemtype="https://schema.org/BlogPosting"
     >
       <header>
-        <h1
-          class="post-title"
-          itemprop="name headline"
-        >
-          {{ $frontmatter.title }}
-        </h1>
         <PostMeta
           :tags="$frontmatter.tags"
           :author="$frontmatter.author"
