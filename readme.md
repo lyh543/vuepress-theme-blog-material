@@ -2,6 +2,8 @@
 
 Material VuePress Blog Theme Powered By Vuetify.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1c1bdacd-89b2-4b60-a19d-58929dab5f16/deploy-status)](https://app.netlify.com/sites/vuepress-theme-blog-vuetify/deploys)
+
 ## 博文路径
 
 个人比较喜欢按文件夹对博客进行分类，URL 呈现博文的路径。如果喜欢使用日期作为 URL，可以进行配置。
