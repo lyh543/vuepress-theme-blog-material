@@ -1,7 +1,7 @@
 <template>
   <div class="blog-tags">
     <BlogTag
-      v-for="tag in tags"
+      v-for="tag in $frontmatterKey.list"
       :key="tag.name"
       :tag="tag"
     />

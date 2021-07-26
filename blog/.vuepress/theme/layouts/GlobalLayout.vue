@@ -1,4 +1,4 @@
-<!-- 全局布局，用于添加 header 和 footer -->
+<!-- global layout for adding header and footer -->
 <template>
   <v-app>
     <ClientOnly>

@@ -1,11 +1,14 @@
+<!-- default layout for page -->
 <template>
   <div>
-    <BaseListLayout v-if="$pagination" />
+    <PostList v-if="$pagination" />
     <Content v-else />
   </div>
 </template>
 <script>
+import PostList from "./PostList";
 export default {
+  components: {PostList},
   created() {
   }
 }
