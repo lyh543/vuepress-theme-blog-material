@@ -105,6 +105,10 @@ module.exports = {
         id: "tags",
         keys: ['tag', 'tags'],
         path: '/tag/',
+        title: '标签',
+        // layout: 'TagList',
+        // todo: TagList Component
+        scopeLayout: 'PostList',
         // todo: 去掉 vue-route 对 tags 的警告
       },
     ],

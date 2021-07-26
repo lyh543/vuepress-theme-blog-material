@@ -2,10 +2,10 @@
   <v-container
     fluid
   >
-  <ErrorAlert
-    as-row
-    :msg="msg"
-  />
+    <ErrorAlert
+      as-row
+      :msg="msg"
+    />
     <v-row justify="center">
       <v-btn
         to="/"
@@ -14,7 +14,6 @@
       </v-btn>
     </v-row>
   </v-container>
-
 </template>
 
 <script>

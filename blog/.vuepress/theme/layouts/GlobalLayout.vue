@@ -5,7 +5,12 @@
       <Header />
     </ClientOnly>
     <v-main id="main-content">
-      <DefaultGlobalLayout id="global-layout" />
+      <v-fade-transition
+        :duration="100"
+        mode="out-in"
+      >
+        <DefaultGlobalLayout id="global-layout" />
+      </v-fade-transition>
     </v-main>
     <Footer />
   </v-app>
