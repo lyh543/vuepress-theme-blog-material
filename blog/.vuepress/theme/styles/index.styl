@@ -1,17 +1,40 @@
 @import "vuepress-theme-blog/index.styl"
+@import "palette.styl"
 
 $contentClass = '.v-application'
 
-{$contentClass}
-  a
-    border-bottom: dotted 1px;
-    text-decoration: none;
-    color: $color-primary-transparent;
+#global-layout
+  word-wrap: break-word;
+  /*margin-top: 300px;*/
+  /*margin-bottom: 128px;*/
 
-    //&:hover
-    //  color: $color-primary;
+// set style of links (except button and list items)
+a
+  border-bottom: dotted 1px;
+  text-decoration: none;
+  color: $color-primary-transparent;
 
-    &.v-btn, &.v-list-item
-      border-bottom: none;
-      &:hover
-        color: none
+  //&:hover
+  //  color: $color-primary;
+
+  &.v-btn, &.v-list-item
+    border-bottom: none;
+    &:hover
+      color: none
+
+.bottom-tips
+  color-grey()
+  text-align: center;
+  font-size: 14px;
+
+#app-bar-title
+  color-white-with-shadow()
+  padding-left: 20px;
+  overflow: visible;
+
+.post-entry-card-title
+  color-white-with-shadow()
+  font-size: 32px !important;
+  line-height: 40px !important;
+  position: absolute;
+  bottom: 0;

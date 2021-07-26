@@ -29,11 +29,3 @@ export default {
   },
 }
 </script>
-
-<style>
-#global-layout {
-  word-wrap: break-word;
-  /*margin-top: 300px;*/
-  /*margin-bottom: 128px;*/
-}
-</style>

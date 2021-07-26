@@ -22,7 +22,7 @@
             :src="postImage"
           >
             <template #placeholder>
-              <PicturePlaceholderAlt/>
+              <PicturePlaceholderAlt />
             </template>
             <v-card-title class="post-entry-card-title">
               {{ page.title }}
@@ -49,10 +49,10 @@
           </p>
         </v-card-text>
 
-        <v-divider/>
+        <v-divider />
 
         <footer>
-          <v-card-text class="presenter-list-area"/>
+          <v-card-text class="presenter-list-area" />
         </footer>
       </v-card>
     </router-link>
@@ -79,14 +79,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.post-entry-card-title {
-  color: #fafafa;
-  text-shadow: #444 1px 1px 8px;
-  font-size: 32px !important;
-  line-height: 40px !important;
-  position: absolute;
-  bottom: 0;
-}
-</style>

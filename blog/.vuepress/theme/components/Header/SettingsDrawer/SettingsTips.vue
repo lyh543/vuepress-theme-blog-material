@@ -34,18 +34,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.bottom-tips {
-  text-align: center;
-  font-size: 14px;
-}
-
-.theme--light .bottom-tips {
-  color: rgba(0, 0, 0, 0.4);
-}
-
-.theme--dark .bottom-tips {
-  color: rgba(255, 255, 255, 0.4);
-}
-</style>

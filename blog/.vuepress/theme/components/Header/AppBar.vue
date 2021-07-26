@@ -139,12 +139,3 @@ export default {
   }
 };
 </script>
-
-<style>
-#app-bar-title {
-  color: #fafafa;
-  text-shadow: #444 1px 1px 8px;
-  padding-left: 20px;
-  overflow: visible;
-}
-</style>

@@ -10,7 +10,10 @@
         :key="page.key"
         justify="center"
       >
-        <v-col cols="12" md="8">
+        <v-col
+          cols="12"
+          md="8"
+        >
           <PostEntryCard
             :page="page"
             itemprop="blogPost"

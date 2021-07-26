@@ -2,9 +2,12 @@
   <SWUpdatePopup v-slot="{ enabled, reload, message, buttonText }">
     <div
       v-if="enabled"
-      class="my-sw-update-popup">
+      class="my-sw-update-popup"
+    >
       {{ message }} 1222<br>
-      <button @click="reload">{{ buttonText }}</button>
+      <button @click="reload">
+        {{ buttonText }}
+      </button>
     </div>
   </SWUpdatePopup>
 </template>
