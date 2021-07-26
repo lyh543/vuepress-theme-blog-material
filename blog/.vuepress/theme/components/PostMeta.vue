@@ -4,7 +4,7 @@
       v-if="author"
       class="post-meta-author"
       itemprop="publisher author"
-      itemtype="http://schema.org/Person"
+      itemtype="https://schema.org/Person"
       itemscope
     >
       <NavigationIcon />
@@ -24,7 +24,7 @@
         itemprop="datePublished"
         :datetime="date"
       >
-        {{ resolvedDate }}
+        {{ postDate }}
       </time>
     </div>
     <ul
@@ -42,12 +42,10 @@
 </template>
 
 <script>
-import dayjs from 'dayjs'
-import dayjsPluginUTC from 'dayjs/plugin/utc'
 import { NavigationIcon, ClockIcon } from 'vue-feather-icons'
 import PostTag from './PostTag.vue'
+import {getPostDate} from "../utils/posts";
 
-dayjs.extend(dayjsPluginUTC)
 
 export default {
   name: 'PostMeta',
@@ -67,10 +65,8 @@ export default {
     },
   },
   computed: {
-    resolvedDate() {
-      return dayjs
-        .utc(this.date)
-        .format(this.$themeConfig.dateFormat || 'ddd MMM DD YYYY')
+    postDate() {
+      return getPostDate(this.date);
     },
     resolvedTags() {
       if (!this.tags || Array.isArray(this.tags)) return this.tags

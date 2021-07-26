@@ -35,19 +35,12 @@
 /* global THEME_BLOG_PAGINATION_COMPONENT */
 
 import Vue from 'vue'
-import dayjs from 'dayjs'
-import dayjsPluginUTC from 'dayjs/plugin/utc'
-import {NavigationIcon, ClockIcon, TagIcon} from 'vue-feather-icons'
-import {
-  Pagination,
-  SimplePagination,
-} from '@vuepress/plugin-blog/lib/client/components'
+import {Pagination, SimplePagination} from '@vuepress/plugin-blog/lib/client/components'
 import PostEntryCard from "../global-components/PostEntryCard";
 
-dayjs.extend(dayjsPluginUTC)
 
 export default {
-  components: {PostEntryCard, NavigationIcon, ClockIcon, TagIcon},
+  components: {PostEntryCard},
 
   data() {
     return {
@@ -79,17 +72,6 @@ export default {
       }
 
       return Vue.component(n) || Pagination
-    },
-
-    resolvePostDate(date) {
-      return dayjs
-        .utc(date)
-        .format(this.$themeConfig.dateFormat || 'ddd MMM DD YYYY')
-    },
-
-    resolvePostTags(tags) {
-      if (!tags || Array.isArray(tags)) return tags
-      return [tags]
     },
   },
 }

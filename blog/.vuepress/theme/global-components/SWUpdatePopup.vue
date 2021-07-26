@@ -13,6 +13,7 @@
 </template>
 
 <script>
+// todo: vuetify sw update popup
 import SWUpdatePopup from '@vuepress/plugin-pwa/lib/SWUpdatePopup.vue'
 
 export default {

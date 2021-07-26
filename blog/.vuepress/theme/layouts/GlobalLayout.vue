@@ -11,11 +11,10 @@
       >
         <DefaultGlobalLayout id="global-layout" />
       </v-fade-transition>
-
-      <ClientOnly>
-        <BackToTop />
-      </ClientOnly>
     </v-main>
+    <ClientOnly>
+      <BackToTop />
+    </ClientOnly>
     <Footer />
   </v-app>
 </template>

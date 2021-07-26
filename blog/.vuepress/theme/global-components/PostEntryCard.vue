@@ -13,25 +13,37 @@
     >
     <router-link :to="page.path">
       <v-card ripple>
-        <header
-          class="ui-post-title"
-          itemprop="name headline"
+        <v-img
+          height="240"
+          :src="postImage"
         >
-          <v-img
-            height="240"
-            :src="postImage"
-          >
-            <template #placeholder>
-              <PicturePlaceholderAlt />
-            </template>
+          <template #placeholder>
+            <PicturePlaceholderAlt/>
+          </template>
+
+          <div style="position: absolute; bottom: 0">
             <v-card-title class="post-entry-card-title">
-              {{ page.title }}
+              <header
+                class="ui-post-title"
+                itemprop="name headline"
+              >
+                {{ page.title }}
+              </header>
             </v-card-title>
-          </v-img>
-        </header>
+            <v-card-subtitle class="post-entry-card-subtitle">
+              <time
+                pubdate
+                itemprop="datePublished"
+                :datetime="page.frontmatter.date"
+              >
+                {{ postDate }}
+              </time>
+            </v-card-subtitle>
+          </div>
+        </v-img>
 
         <v-card-text>
-          <client-only v-if="page.excerpt">
+          <ClientOnly v-if="page.excerpt">
             <!-- eslint-disable vue/no-v-html -->
             <p
               class="ui-post-summary"
@@ -39,7 +51,7 @@
               v-html="page.excerpt"
             />
             <!-- eslint-enable vue/no-v-html -->
-          </client-only>
+          </ClientOnly>
           <p
             v-else
             class="ui-post-summary"
@@ -49,10 +61,10 @@
           </p>
         </v-card-text>
 
-        <v-divider />
+        <v-divider/>
 
         <footer>
-          <v-card-text class="presenter-list-area" />
+          <v-card-text class="presenter-list-area"/>
         </footer>
       </v-card>
     </router-link>
@@ -61,7 +73,7 @@
 
 <script>
 import PicturePlaceholderAlt from "./PicturePlaceholderAlt";
-import {generatePostImage} from "../utils/posts";
+import {generatePostImage, getPostDate} from "../utils/posts";
 
 export default {
   components: {PicturePlaceholderAlt},
@@ -75,6 +87,9 @@ export default {
   computed: {
     postImage() {
       return this.page.image ? this.page.image : generatePostImage(this.page.key);
+    },
+    postDate() {
+      return getPostDate(this.page.frontmatter.date);
     }
   }
 }
