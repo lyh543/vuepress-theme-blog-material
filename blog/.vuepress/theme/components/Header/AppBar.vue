@@ -11,13 +11,6 @@
     shrink-on-scroll
     fade-img-on-scroll
   >
-    <template #img="{ props }">
-      <v-img
-        v-bind="props"
-        gradient="to top right, rgba(33, 150, 243, 0.8), rgba(128,208,199,0.5)"
-      />
-    </template>
-
     <v-app-bar-nav-icon @click="$emit('toggleNavigation')" />
 
     <template v-if="showSearchBar">
@@ -49,7 +42,7 @@
       <!--   否则把标题和搜索按钮展示给用户   -->
       <v-fade-transition hide-on-leave>
         <v-app-bar-title
-          style="padding-left: 20px; overflow: visible"
+          id="app-bar-title"
           :style="appbarTitleStyle"
           v-text="$page.frontmatter.title || $siteTitle"
         />
@@ -146,3 +139,12 @@ export default {
   }
 };
 </script>
+
+<style>
+#app-bar-title {
+  color: #fafafa;
+  text-shadow: #444 1px 1px 8px;
+  padding-left: 20px;
+  overflow: visible;
+}
+</style>

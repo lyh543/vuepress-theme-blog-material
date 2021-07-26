@@ -130,7 +130,9 @@ export default {
     },
   },
 
+
   created() {
+    // this.$frontmatter.title = 'Hello world!';
     this.paginationComponent = this.getPaginationComponent()
   },
 
