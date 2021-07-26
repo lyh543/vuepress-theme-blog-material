@@ -21,7 +21,6 @@ module.exports = {
   },
 
   plugins: [
-    '@vuepress/plugin-back-to-top',
     'vuepress-plugin-smooth-scroll',
     'vuepress-plugin-table-of-contents',
     ['@maginapp/vuepress-plugin-katex', {delimiters: 'dollars'}],

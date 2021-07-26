@@ -11,6 +11,10 @@
       >
         <DefaultGlobalLayout id="global-layout" />
       </v-fade-transition>
+
+      <ClientOnly>
+        <BackToTop />
+      </ClientOnly>
     </v-main>
     <Footer />
   </v-app>
@@ -20,9 +24,11 @@
 import DefaultGlobalLayout from '@app/components/GlobalLayout'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer'
+import BackToTop from "../global-components/BackToTop";
 
 export default {
   components: {
+    BackToTop,
     DefaultGlobalLayout,
     Header,
     Footer,
