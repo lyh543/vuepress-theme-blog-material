@@ -3,12 +3,12 @@
     fluid
   >
     <ErrorAlert
-      as-row
       :msg="msg"
     />
     <v-row justify="center">
       <v-btn
         to="/"
+        text
       >
         Take me home
       </v-btn>
@@ -24,8 +24,9 @@ export default {
   data: () => ({
     msg: '404 Not Found'
   }),
-  mounted() {
-    this.msg += ': ' + this.$route.path;
+  created() {
+    const path = this.$route.path;
+    this.msg += ': ' + decodeURI(path);
   }
 }
 </script>

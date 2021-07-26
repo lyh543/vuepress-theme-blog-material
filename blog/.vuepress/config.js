@@ -26,7 +26,7 @@ module.exports = {
     'vuepress-plugin-table-of-contents',
     ['@maginapp/vuepress-plugin-katex', {delimiters: 'dollars'}],
     ['@vuepress/plugin-medium-zoom', {selector: 'img'}],
-    ["@vuepress/plugin-pwa", {serviceWorker: true, updatePopup: true}],
+    ["@vuepress/plugin-pwa", {serviceWorker: true, updatePopup: true, popupComponent: 'SWUpdatePopup'}],
     ['@vuepress/plugin-search', {searchMaxSuggestions: 10}],
     ['vuepress-plugin-clean-urls', {normalSuffix: '/'}],
     ['vuepress-plugin-sitemap', {hostname: 'https://blog.lyh543.cn/'}],
@@ -56,14 +56,14 @@ module.exports = {
 
 
     // nav 和 footer.contact 的图标默认来源：https://materialdesignicons.com/
-    // footer.contact 也可以使用自己的图标（请仿造 bilibili 的格式）
+    // footer.contact 也可以使用自己的图标（参考 bilibili 图标的格式）
     // 博客内链接请使用 to，外部链接请使用 href
     nav: [
       {text: '博客', iconOn: 'mdi-home', iconOff: 'mdi-home-outline', to: '/'},
       {text: '标签', iconOn: 'mdi-tag-multiple', iconOff: 'mdi-tag-multiple-outline', to: '/tag/'},
       {text: '时间线', iconOn: 'mdi-timeline', iconOff: 'mdi-timeline-outline', to: '/timeline/'},
-      {text: 'RSS', iconOn: 'mdi-rss', iconOff: 'mdi-rss', href: '/feed.atom'},
       {text: '关于我', iconOn: 'mdi-account', iconOff: 'mdi-account-outline', to: '/about/'},
+      {text: 'RSS', iconOn: 'mdi-rss', iconOff: 'mdi-rss', href: '/feed.atom'},
     ],
 
     footer: {

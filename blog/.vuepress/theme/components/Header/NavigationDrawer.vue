@@ -85,8 +85,8 @@ export default {
     }
   },
 
-  // mount 后加载导航栏的选项
-  mounted() {
+  // create 后加载导航栏的选项
+  created() {
     let items = this.$themeConfig.nav;
     items.forEach(element => {
       element.value = false;
