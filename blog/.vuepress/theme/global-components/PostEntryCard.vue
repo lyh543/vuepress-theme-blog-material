@@ -11,7 +11,10 @@
       itemprop="mainEntityOfPage"
       :content="page.path"
     >
-    <router-link :to="page.path">
+    <router-link
+      :to="page.path"
+      class="post-entry"
+    >
       <v-card ripple>
         <v-img
           height="240"

@@ -1,3 +1,4 @@
+@import "~github-markdown-css/github-markdown.css";
 @import "palette.styl"
 @import "code.styl"
 @import "posts.styl"
@@ -9,17 +10,16 @@
 
 // set style of links (except buttons, chips and list items)
 a
-  border-bottom: dotted 1px;
-  text-decoration: none;
-  color: $color-primary-transparent;
+  //border-bottom: dotted 1px;
+  //text-decoration: underline;
+  //color: $color-primary-transparent;
 
   //&:hover
   //  color: $color-primary;
 
-  &.v-btn, &.v-list-item, &.v-chip
-    border-bottom: none;
-    &:hover
-      color: none
+  &.v-btn, &.v-list-item, &.v-chip, &.post-entry
+    text-decoration: none;
+
 
 .bottom-tips
   color-grey()
