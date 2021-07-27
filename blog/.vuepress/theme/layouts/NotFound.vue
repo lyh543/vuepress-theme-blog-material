@@ -8,7 +8,7 @@
     <v-row justify="center">
       <v-btn
         to="/"
-        text
+        plain
       >
         Take me home
       </v-btn>

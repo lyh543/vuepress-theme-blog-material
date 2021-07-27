@@ -44,7 +44,7 @@
 <script>
 import { NavigationIcon, ClockIcon } from 'vue-feather-icons'
 import PostTag from './PostTag.vue'
-import {getPostDate} from "../utils/posts";
+import {convertDatetimeToDate} from "../utils/posts";
 
 
 export default {
@@ -66,10 +66,10 @@ export default {
   },
   computed: {
     postDate() {
-      return getPostDate(this.date);
+      return convertDatetimeToDate(this.date, this.$themeConfig.dateFormat);
     },
     resolvedTags() {
-      if (!this.tags || Array.isArray(this.tags)) return this.tags
+      if (!this.tags || Array.isArray(this.tags)) return this.tags;
       return [this.tags]
     },
   },

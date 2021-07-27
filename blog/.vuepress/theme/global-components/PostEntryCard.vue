@@ -18,7 +18,7 @@
           :src="postImage"
         >
           <template #placeholder>
-            <PicturePlaceholderAlt/>
+            <PicturePlaceholderAlt />
           </template>
 
           <div style="position: absolute; bottom: 0">
@@ -42,11 +42,10 @@
           </div>
         </v-img>
 
-        <v-card-text>
+        <v-card-text class="post-summary">
           <ClientOnly v-if="page.excerpt">
             <!-- eslint-disable vue/no-v-html -->
             <p
-              class="ui-post-summary"
               itemprop="description"
               v-html="page.excerpt"
             />
@@ -54,17 +53,18 @@
           </ClientOnly>
           <p
             v-else
-            class="ui-post-summary"
             itemprop="description"
           >
             {{ page.frontmatter.summary || page.summary }}
           </p>
         </v-card-text>
 
-        <v-divider/>
+        <v-divider />
 
         <footer>
-          <v-card-text class="presenter-list-area"/>
+          <v-card-actions class="tag-list-area py-0">
+            <TagChipGroup :tags="page.frontmatter.tags" />
+          </v-card-actions>
         </footer>
       </v-card>
     </router-link>
@@ -73,10 +73,12 @@
 
 <script>
 import PicturePlaceholderAlt from "./PicturePlaceholderAlt";
-import {generatePostImage, getPostDate} from "../utils/posts";
+import {generatePostImage, convertDatetimeToDate} from "../utils/posts";
+import TagChipGroup from "./TagChipGroup";
 
+// todo: tag 上下的间距很不正常
 export default {
-  components: {PicturePlaceholderAlt},
+  components: {TagChipGroup, PicturePlaceholderAlt},
   props: {
     page: {
       type: Object,
@@ -86,10 +88,10 @@ export default {
 
   computed: {
     postImage() {
-      return this.page.image ? this.page.image : generatePostImage(this.page.key);
+      return generatePostImage(this.page);
     },
     postDate() {
-      return getPostDate(this.page.frontmatter.date);
+      return convertDatetimeToDate(this.page.frontmatter.date, this.$themeConfig.dateFormat);
     }
   }
 }

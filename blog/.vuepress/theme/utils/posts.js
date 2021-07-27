@@ -1,16 +1,35 @@
 import moment from "./moment";
 
+/**
+ * parse post key (hex digit) to integer
+ * @param key {String} key of posts, like 'v-1234abcd'
+ * @returns {number}
+ */
+export function parsePostKeyToInt(key) {
+  return parseInt(key.slice(2), 16);
+}
 
-export function generatePostImage(key) {
+
+/**
+ * generate random image for post by its key
+ * @param page {{key: string}} vuepress posts
+ * @returns {string} the link of image
+ */
+export function generatePostImage(page) {
   const imageLength = 19;
   const imageLink = '/img/random/material-#.png';
 
-  const id = parseInt(key.slice(2), 16);
-  const index = id % imageLength;
+  const index = parsePostKeyToInt(page.key) % imageLength;
   return imageLink.replace('#', String(index));
 }
 
 
-export function getPostDate(datetime) {
-  return moment(new Date(datetime)).format('YYYY-MM-DD');
+/**
+ * parse datetime to date
+ * @param datetime {String} datetime (maybe of different format)
+ * @param dateFormat {String} vm.$themeConfig.dateFormat
+ * @returns {string} date
+ */
+export function convertDatetimeToDate(datetime, dateFormat = 'YYYY-MM-DD') {
+  return moment(new Date(datetime)).format(dateFormat);
 }

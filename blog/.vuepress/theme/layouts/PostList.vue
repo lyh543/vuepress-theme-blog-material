@@ -12,7 +12,8 @@
       >
         <v-col
           cols="12"
-          md="8"
+          md="9"
+          class="pa-5"
         >
           <PostEntryCard
             :page="page"

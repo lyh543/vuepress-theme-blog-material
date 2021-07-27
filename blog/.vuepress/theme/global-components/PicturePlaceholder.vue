@@ -12,7 +12,7 @@
       indeterminate
       :color="color"
       :size="size"
-      :width="real_width"
+      :width="widthInternal"
     />
   </v-row>
 </template>
@@ -35,7 +35,7 @@ export default {
   },
 
   computed: {
-    real_width() {
+    widthInternal() {
       return this.width || this.size / 8;
     }
   }

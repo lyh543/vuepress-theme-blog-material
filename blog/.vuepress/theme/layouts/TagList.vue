@@ -12,10 +12,5 @@
 import TagChip from "../global-components/TagChip";
 export default {
   components: {TagChip},
-  props: {
-    tags: {
-      type: Array,
-    }
-  },
 }
 </script>
