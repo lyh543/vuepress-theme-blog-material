@@ -25,7 +25,7 @@ module.exports = {
     'vuepress-plugin-table-of-contents',
     ['@maginapp/vuepress-plugin-katex', {delimiters: 'dollars'}],
     ['@vuepress/plugin-medium-zoom', {selector: 'img'}],
-    ["@vuepress/plugin-pwa", {serviceWorker: true, updatePopup: true, popupComponent: 'SWUpdatePopup'}],
+    ["@vuepress/plugin-pwa", {serviceWorker: true, updatePopup: true, popupComponent: 'PwaSnackbar'}],
     ['@vuepress/plugin-search', {searchMaxSuggestions: 10}],
     ['vuepress-plugin-clean-urls', {normalSuffix: '/'}],
     ['vuepress-plugin-sitemap', {hostname: 'https://blog.lyh543.cn/'}],
