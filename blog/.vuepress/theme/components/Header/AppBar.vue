@@ -1,4 +1,3 @@
-<!-- appbar: 顶栏 -->
 <template>
   <v-app-bar
     ref="appbar"
@@ -14,7 +13,6 @@
     <v-app-bar-nav-icon @click="$emit('toggleNavigation')" />
 
     <template v-if="showSearchBar">
-      <!--  如果搜索框可以使用，并且用户希望展示，就展示给用户  -->
       <v-fade-transition hide-on-leave>
         <v-btn
           icon
@@ -39,12 +37,11 @@
     </template>
 
     <template v-else>
-      <!--   否则把标题和搜索按钮展示给用户   -->
       <v-fade-transition hide-on-leave>
         <v-app-bar-title
           id="app-bar-title"
           :style="appbarTitleStyle"
-          v-text="$page.frontmatter.title || $siteTitle"
+          v-text="$page.title || $siteTitle"
         />
       </v-fade-transition>
 

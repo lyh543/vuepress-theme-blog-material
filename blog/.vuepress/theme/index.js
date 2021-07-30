@@ -1,6 +1,5 @@
 const removeMd = require("remove-markdown");
 const path = require("path");
-const pick = require("lodash/pick");
 
 module.exports = themeConfig => {
   // default config for themeConfig
@@ -20,6 +19,7 @@ module.exports = themeConfig => {
     "feed"
   ];
 
+  const pick = (o, props) => Object.assign({}, ...props.map(prop => ({[prop]: o[prop]})));
   const themeConfigPluginOptions = pick(themeConfig, themeConfigPluginProperties);
   const blogPluginOptions = Object.assign(
     {},
@@ -41,27 +41,32 @@ module.exports = themeConfig => {
       '@public': path.resolve(__dirname, '../public'),
     },
 
-    // Generate summary.
     extendPageData($page) {
       const {
-        _filePath,           // 源文件的绝对路径
-        _computed,           // 在构建期访问全局的计算属性，如：_computed.$localePath.
-        _content,            // 源文件的原始内容字符串
-        _strippedContent,    // 源文件剔除掉 frontmatter 的内容字符串
-        key,                 // 页面唯一的 hash key
-        frontmatter,         // 页面的 frontmatter 对象
-        regularPath,         // 当前页面遵循文件层次结构的默认链接
-        path,                // 当前页面的实际链接（在 permalink 不存在时，使用 regularPath ）
+        _filePath,           // file's absolute path
+        _computed,           // access the client global computed mixins at build time, e.g _computed.$localePath.
+        _content,            // file's raw content string
+        _strippedContent,    // file's content string without frontmatter
+        key,                 // page's unique hash key
+        frontmatter,         // page's frontmatter object
+        regularPath,         // current page's default link (follow the file hierarchy)
+        path,                // current page's real link (use regularPath when permalink does not exist)
       } = $page
 
-      // 我也不知道为什么在这里去除链接中的 _posts 就会报错
+      /*
+       * idk why building failed if we removed the '_posts' from regularPath
+       * so I have to do it in config.js
+       */
       // if (regularPath.startsWith('/_posts'))
       //   $page.regularPath = regularPath.substr(7);
 
-      if (!_strippedContent) {
-        return;
-      }
-      if (themeConfig.summary) {
+      /*
+       * Generate summary.
+       * description in frontmatter > generated summary
+       */
+      if ($page.frontmatter.summary) {
+        $page.frontmatter.description = $page.frontmatter.summary;
+      } else if (_strippedContent && themeConfig.summary) {
         $page.summary =
           removeMd(
             _strippedContent
@@ -71,8 +76,26 @@ module.exports = themeConfig => {
           ) + " ...";
         $page.frontmatter.description = $page.summary;
       }
-      if ($page.frontmatter.summary) {
-        $page.frontmatter.description = $page.frontmatter.summary;
+
+      /*
+       * Generate Title for posts if it exists in neither $page nor frontmatter
+       */
+      if (!$page.title && !$page.frontmatter.title && _filePath) {
+        // get file name without extension
+        const defaultTitle = _filePath
+          .match(/[^\/\\]+$/i)[0]  // get string after last /
+          .match(/^[^.]+/i)[0];    // get string before first .
+        if (_strippedContent) {
+          // find all markdown headings
+          const headings = _strippedContent.match(/# .+/);
+          if (headings.length > 0)
+            $page.title = headings[0].replace(/# +/, "");
+          else
+            $page.title = defaultTitle;
+        } else {
+          $page.title = defaultTitle;
+        }
+        $page.frontmatter.title = $page.title;
       }
     }
   };

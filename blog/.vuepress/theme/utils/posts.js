@@ -19,7 +19,7 @@ export function generatePostImage(page) {
   const imageLength = 19;
   const imageLink = '/img/random/material-#.png';
 
-  const index = parsePostKeyToInt(page.key) % imageLength;
+  const index = parsePostKeyToInt(page.key) % imageLength + 1;
   return imageLink.replace('#', String(index));
 }
 
@@ -32,4 +32,15 @@ export function generatePostImage(page) {
  */
 export function convertDatetimeToDate(datetime, dateFormat = 'YYYY-MM-DD') {
   return moment(new Date(datetime)).format(dateFormat);
+}
+
+/**
+ * get file name without extension
+ * @param filePath {String}
+ * @returns {String}
+ */
+export function getFileNameWithoutExtension(filePath) {
+  return filePath
+    .match(/[^\/\\]+$/i)[0]  // get string after last /
+    .match(/^[^.]+/i)[0];    // get string before first .
 }

@@ -9,7 +9,7 @@ export function normalize(path) {
     .replace(extRE, '')
 }
 
-/*
+/**
  * find parent vm by ref
  * @param {String} ref
  * @param {Vue} vm
@@ -30,7 +30,10 @@ export function findContainerInVm(ref, vm, def) {
   return container || def
 }
 
-
+/**
+ * generate MD5 of string
+ * @returns {number}
+ */
 String.prototype.hashCode = function() {
   let hash = 0, i, chr;
   if (this.length === 0) return hash;
@@ -41,3 +44,13 @@ String.prototype.hashCode = function() {
   }
   return hash;
 };
+
+/**
+ * alternative of lodash/pick
+ * @param o {Object}
+ * @param props {Array<String>}
+ * @returns {Object}
+ */
+export function pick(o, props) {
+  return Object.assign({}, ...props.map(prop => ({[prop]: o[prop]})));
+}

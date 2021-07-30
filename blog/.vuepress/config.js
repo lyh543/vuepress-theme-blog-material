@@ -1,7 +1,6 @@
 const path = require("path");
 
 module.exports = {
-
   title: 'vuepress-theme-blog-vuetify',
   description: '正在开发中的 Material Design 风格 Vuepress',
   author: 'lyh543',
@@ -33,20 +32,21 @@ module.exports = {
 
   extendPageData($page) {
     const {
-      _filePath,           // 源文件的绝对路径
-      _computed,           // 在构建期访问全局的计算属性，如：_computed.$localePath.
-      _content,            // 源文件的原始内容字符串
-      _strippedContent,    // 源文件剔除掉 frontmatter 的内容字符串
-      key,                 // 页面唯一的 hash key
-      frontmatter,         // 页面的 frontmatter 对象
-      regularPath,         // 当前页面遵循文件层次结构的默认链接
-      path,                // 当前页面的实际链接（在 permalink 不存在时，使用 regularPath ）
+      _filePath,           // file's absolute path
+      _computed,           // access the client global computed mixins at build time, e.g _computed.$localePath.
+      _content,            // file's raw content string
+      _strippedContent,    // file's content string without frontmatter
+      key,                 // page's unique hash key
+      frontmatter,         // page's frontmatter object
+      regularPath,         // current page's default link (follow the file hierarchy)
+      path,                // current page's real link (use regularPath when permalink does not exist)
     } = $page
 
     // 去除链接中的 _posts
     if (regularPath.startsWith('/_posts'))
-      $page.regularPath = regularPath.substr(7);
-    // TODO： 去掉 .html。clean-urls 无效，是不是上面的问题？
+      $page.regularPath = regularPath.substr('/_posts'.length);
+    // fixme： 去掉 .html
+    //  clean-urls 无效，是不是上面的问题？
   },
 
   theme: './theme',
@@ -83,7 +83,7 @@ module.exports = {
     },
 
     // Ref: https://vuepress-theme-blog.ulivz.com/config/#directories
-    directories:[
+    directories: [
       {
         id: 'post',
         title: null,  // if keep null, navbar will show this.$siteTitle
@@ -121,7 +121,7 @@ module.exports = {
     sitemap: {
       hostname: 'https://blog.lyh543.cn/'
     },
-    
+
     // Ref: https://vuepress-theme-blog.ulivz.com/config/#comment
     // comment: {
     //   service: 'vssue',
