@@ -8,9 +8,9 @@ tags:
 
 <h1><a id="user-content-github-markdown-css-demo" class="anchor" href="#github-markdown-css-demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>GitHub Markdown CSS demo</h1>
 
-<p><a name="user-content-headers"></a></p><a name="user-content-headers">
+<p><a name="user-content-headers"></a></p><a name="user-content-headers"></a>
 
-</a><h2><a name="user-content-headers"></a><a id="user-content-headers" class="anchor" href="#headers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Headers</h2>
+<h2><a name="user-content-headers"></a><a id="user-content-headers" class="anchor" href="#headers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Headers</h2>
 
 <pre lang="no-highlight"><code># H1
 ## H2

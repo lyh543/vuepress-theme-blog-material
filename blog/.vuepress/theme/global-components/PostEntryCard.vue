@@ -33,7 +33,10 @@
                 {{ page.title }}
               </header>
             </v-card-title>
-            <v-card-subtitle class="post-entry-card-subtitle">
+            <v-card-subtitle
+              v-if="postDate"
+              class="post-entry-card-subtitle"
+            >
               <time
                 pubdate
                 itemprop="datePublished"
@@ -62,13 +65,15 @@
           </p>
         </v-card-text>
 
-        <v-divider />
+        <template v-if="page.frontmatter.tags">
+          <v-divider />
 
-        <footer>
-          <v-card-actions class="tag-list-area py-0">
-            <TagChipGroup :tags="page.frontmatter.tags" />
-          </v-card-actions>
-        </footer>
+          <footer>
+            <v-card-actions class="tag-list-area py-0">
+              <TagChipGroup :tags="page.frontmatter.tags" />
+            </v-card-actions>
+          </footer>
+        </template>
       </v-card>
     </router-link>
   </article>
@@ -79,7 +84,6 @@ import PicturePlaceholderAlt from "./PicturePlaceholderAlt";
 import {generatePostImage, convertDatetimeToDate} from "../utils/posts";
 import TagChipGroup from "./TagChipGroup";
 
-// todo: tag 上下的间距很不正常
 export default {
   components: {TagChipGroup, PicturePlaceholderAlt},
   props: {
@@ -89,13 +93,20 @@ export default {
     }
   },
 
-  computed: {
-    postImage() {
-      return generatePostImage(this.page);
-    },
-    postDate() {
-      return convertDatetimeToDate(this.page.frontmatter.date, this.$themeConfig.dateFormat);
+  data() {
+    return {
+      postImage: generatePostImage(this.page),
+      postDate: ''
     }
+  },
+
+  created() {
+    const date = this.page.frontmatter.date;
+    const dateFormat = this.$themeConfig.dateFormat;
+    if (date)
+      this.postDate = convertDatetimeToDate(date, dateFormat);
+    else
+      this.postDate = '';
   }
 }
 </script>
