@@ -9,7 +9,7 @@
         :duration="100"
         mode="out-in"
       >
-        <DefaultGlobalLayout id="global-layout" />
+        <component :is="layout" />
       </v-fade-transition>
     </v-main>
     <ClientOnly>
@@ -20,17 +20,30 @@
 </template>
 
 <script>
-import DefaultGlobalLayout from '@app/components/GlobalLayout'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer'
 import BackToTop from "../global-components/BackToTop";
+import Layout from "./Layout";
+import NotFound from "./NotFound";
+import {additionalRoutes} from "@theme/router";
 
 export default {
   components: {
     BackToTop,
-    DefaultGlobalLayout,
     Header,
     Footer,
   },
+  computed: {
+    layout() {
+      const route = additionalRoutes.find(route => route.path === this.$route.path);
+      if (route)
+        return route.component;
+      if (this.$frontmatter.layout)
+        return this.$frontmatter.layout
+      if (!this.$page.path)
+        return NotFound;
+      return Layout;
+    }
+  }
 }
 </script>

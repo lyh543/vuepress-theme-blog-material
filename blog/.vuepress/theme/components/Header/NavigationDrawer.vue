@@ -13,7 +13,7 @@
         </v-list-item-avatar>
       </v-list-item>
 
-      <v-list-item :href="'mailto:' + email">
+      <v-list-item @click="gotoDebug">
         <v-list-item-content>
           <v-list-item-title class="text-h6">
             {{ author }}
@@ -101,7 +101,7 @@ export default {
       if (now - this.latestClick > 500) // 0.5 秒未点击就视为不连续
         this.clickTotal = 0;
       this.clickTotal++;
-      if (this.clickTotal > 5) this.$router.push({name: 'Debug'});
+      if (this.clickTotal > 5) this.$router.push('/debug');
       this.latestClick = now;
     },
   }
