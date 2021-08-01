@@ -1,8 +1,8 @@
-# vuepress-theme-blog-vuetify
+# vuepress-theme-blog-material
 
 Material VuePress Blog Theme Powered By Vuetify.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1c1bdacd-89b2-4b60-a19d-58929dab5f16/deploy-status)](https://app.netlify.com/sites/vuepress-theme-blog-vuetify/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1c1bdacd-89b2-4b60-a19d-58929dab5f16/deploy-status)](https://app.netlify.com/sites/vuepress-theme-blog-material/deploys)
 
 ## 博文路径
 

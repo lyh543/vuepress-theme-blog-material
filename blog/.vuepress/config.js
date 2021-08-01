@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  title: 'vuepress-theme-blog-vuetify',
+  title: 'vuepress-theme-blog-material',
   description: '正在开发中的 Material Design 风格 Vuepress',
   author: 'lyh543',
   email: 'lyh543@outlook.com',
@@ -27,7 +27,7 @@ module.exports = {
     ["@vuepress/plugin-pwa", {serviceWorker: true, updatePopup: true, popupComponent: 'PwaSnackbar'}],
     ['@vuepress/plugin-search', {searchMaxSuggestions: 10}],
     ['vuepress-plugin-clean-urls', {normalSuffix: '/'}],
-    ['vuepress-plugin-sitemap', {hostname: 'https://blog.lyh543.cn/'}],
+    ['vuepress-plugin-sitemap', {hostname: 'https://vuepress-theme-blog-material.netlify.app/'}],
   ],
 
   extendPageData($page) {
@@ -67,8 +67,8 @@ module.exports = {
 
     footer: {
       contact: [
-        {icon: 'mdi-github', href: 'https://github.com/lyh543/vuepress-theme-blog-vuetify/'},
-        {icon: 'mdi-web', href: 'https://vuepress-theme-blog-vuetify.lyh543.cn/'},
+        {icon: 'mdi-github', href: 'https://github.com/lyh543/vuepress-theme-blog-material/'},
+        {icon: 'mdi-web', href: 'https://vuepress-theme-blog-material.lyh543.cn/'},
         {icon: 'mdi-email', href: 'mailto:lyh543@outlook.com'},
         {icon: 'mdi-sina-weibo', href: 'https://weibo.com/'},
         {icon: 'mdi-wechat', href: 'https://weixin.qq.com/'},
@@ -106,8 +106,7 @@ module.exports = {
         path: '/tag/',
         title: '标签',
         layout: 'TagList',
-        // todo: TagList Component
-        scopeLayout: 'TagList',
+        scopeLayout: 'PostList',
         // todo: 去掉 vue-route 对 tags 的警告
       },
     ],
@@ -119,7 +118,7 @@ module.exports = {
 
     // Ref: https://vuepress-theme-blog.ulivz.com/config/#sitemap
     sitemap: {
-      hostname: 'https://blog.lyh543.cn/'
+      hostname: 'https://vuepress-theme-blog-material.netlify.app/'
     },
 
     // Ref: https://vuepress-theme-blog.ulivz.com/config/#comment
@@ -133,7 +132,7 @@ module.exports = {
 
     // Ref: https://vuepress-theme-blog.ulivz.com/config/#feed
     feed: {
-      canonical_base: 'https://blog.lyh543.cn/',
+      canonical_base: 'https://vuepress-theme-blog-material.netlify.app/',
       feeds: {
         rss: {enable: true},    // rss.xml
         atom: {enable: true},   // feed.atom

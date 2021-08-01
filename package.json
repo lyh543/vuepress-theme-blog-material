@@ -1,9 +1,9 @@
 {
-  "name": "vuepress-theme-blog-vuetify",
+  "name": "vuepress-theme-blog-material",
   "version": "0.0.0",
   "description": "Material VuePress Blog Theme Powered By Vuetify",
   "main": "index.js",
-  "homepage": "https://github.com/lyh543/vuepress-theme-blog-vuetify/",
+  "homepage": "https://github.com/lyh543/vuepress-theme-blog-material/",
   "scripts": {
     "serve": "vuepress dev blog",
     "build": "vuepress build blog",

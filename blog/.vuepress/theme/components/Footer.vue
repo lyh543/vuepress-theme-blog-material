@@ -67,11 +67,11 @@
         <span class="footer-text">
           Theme
           <a
-            href="https://github.com/lyh543/vuepress-theme-blog-vuetify/"
+            href="https://github.com/lyh543/vuepress-theme-blog-material/"
             target="_blank"
             class="footer-link"
           >
-            vuepress-theme-blog-vuetify
+            vuepress-theme-blog-material
           </a>
         </span>
       </v-card-text>

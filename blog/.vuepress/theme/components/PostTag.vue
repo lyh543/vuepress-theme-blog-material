@@ -1,3 +1,4 @@
+<!--todo: delete -->
 <template>
   <li class="post-tag">
     <router-link :to="'/tag/' + tag">

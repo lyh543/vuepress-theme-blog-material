@@ -1,3 +1,4 @@
+<!-- todo: delete-->
 <template>
   <div class="post-meta">
     <div
@@ -42,7 +43,7 @@
 </template>
 
 <script>
-import { NavigationIcon, ClockIcon } from 'vue-feather-icons'
+import {ClockIcon, NavigationIcon} from 'vue-feather-icons'
 import PostTag from './PostTag.vue'
 import {convertDatetimeToDate} from "../utils/posts";
 

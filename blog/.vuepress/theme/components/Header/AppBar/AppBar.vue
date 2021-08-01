@@ -84,6 +84,13 @@
       <v-icon>mdi-cog-outline</v-icon>
     </v-btn>
 
+    <template
+      v-if="$currentTags"
+      #extension
+    >
+      <TagTab />
+    </template>
+
     <!--    <v-progress-linear-->
     <!--      :active="$store.state.appbarLoading"-->
     <!--      indeterminate-->
@@ -100,9 +107,11 @@
 // import {getMyProfile} from "@/api/user";
 import SearchBox from "@SearchBox"
 import appbar_background_url from "@public/img/appbar_background.png";
+import TagTab from "./extensions/TagTab";
 
 export default {
   components: {
+    TagTab,
     SearchBox,
     // PicturePlaceholder,
   },

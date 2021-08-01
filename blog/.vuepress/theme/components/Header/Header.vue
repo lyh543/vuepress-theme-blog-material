@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import AppBar from './AppBar';
+import AppBar from './AppBar/AppBar';
 import NavigationDrawer from './NavigationDrawer';
 import SettingsDrawer from './SettingsDrawer/SettingsDrawer.vue';
 
