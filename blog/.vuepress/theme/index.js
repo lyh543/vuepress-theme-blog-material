@@ -22,7 +22,7 @@ function getFirstMarkdownHeading(content) {
   if (!content)
     return null;
   const headings = content.match(/# .+/);
-  if (headings.length > 0)
+  if (headings && headings.length > 0)
     return headings[0].replace(/# +/, "");
   else
     return null;
@@ -82,7 +82,7 @@ module.exports = themeConfig => {
       } = $page
 
       /*
-       * idk why building failed if we removed the '_posts' from regularPath
+       * i don't know why building failed if we removed the '_posts' from regularPath
        * so I have to do it in config.js
        */
       // if (regularPath.startsWith('/_posts'))

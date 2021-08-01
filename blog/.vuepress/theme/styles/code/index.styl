@@ -1,0 +1,15 @@
+/*
+ * You can choose <code> theme from:
+ * https://github.com/PrismJS/prism
+ * https://github.com/PrismJS/prism-themes
+ *
+ * but if stylus import css, it wouldn't add '.theme--dark' to it
+ * so you need to copy '~prism-theme/theme/prism-xxx.css' to '@styles/code/prism-xxx.styl' and import as follows
+ */
+
+.theme--dark
+  @import prism-material-dark
+.theme--light
+  @import prism-material-light
+
+@import "~prismjs/plugins/line-numbers/prism-line-numbers.css"

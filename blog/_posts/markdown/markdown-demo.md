@@ -1,3 +1,9 @@
+---
+tags:
+- markdown
+---
+<!-- this file is to test whether vuepress can choose appropriate title for markdown -->
+
 This a test of all markdown possibilities:
 
 ------------------------------------------

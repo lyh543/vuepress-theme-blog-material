@@ -1,10 +1,11 @@
 ---
-title: GitHub Markdown CSS demo 1
+title: HTML-in-Markdown Demo
 date: 2021/7/27
 tags:
 - GitHub
 - markdown
 ---
+<!--  this file is to test whether vuepress can render html in markdown  -->
 
 <h1><a id="user-content-github-markdown-css-demo" class="anchor" href="#github-markdown-css-demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>GitHub Markdown CSS demo</h1>
 

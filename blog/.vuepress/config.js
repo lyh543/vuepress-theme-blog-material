@@ -15,7 +15,8 @@ module.exports = {
   ],
 
   markdown: {
-    lineNumbers: true,
+    // todo: line numbers
+    lineNumbers: false,
     toc: {includeLevel: [2, 3, 4]}
   },
 
@@ -147,7 +148,6 @@ module.exports = {
     // Ref: https://vuepress-theme-blog.ulivz.com/config/#paginationcomponent
     paginationComponent: 'SimplePagination',
   },
-
 
   configureWebpack: {
     module: {

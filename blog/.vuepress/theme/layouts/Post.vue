@@ -29,7 +29,8 @@
 <script>
 import Toc from '@theme/components/Toc.vue'
 import PostMeta from '@theme/components/PostMeta.vue'
-import { Comment } from '@vuepress/plugin-blog/lib/client/components'
+import {Comment} from '@vuepress/plugin-blog/lib/client/components'
+// import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
 
 export default {
   components: {
