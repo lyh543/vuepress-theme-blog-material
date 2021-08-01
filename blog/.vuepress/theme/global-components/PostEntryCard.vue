@@ -70,7 +70,7 @@
 
           <footer>
             <v-card-actions class="tag-list-area py-0">
-              <TagChipGroup :tags="page.frontmatter.tags" />
+              <TagChipGroup :tag-names="page.frontmatter.tags" />
             </v-card-actions>
           </footer>
         </template>
@@ -81,7 +81,7 @@
 
 <script>
 import PicturePlaceholderAlt from "./PicturePlaceholderAlt";
-import {generatePostImage, convertDatetimeToDate} from "../utils/posts";
+import {convertDatetimeToDate, generatePostImage} from "../utils/posts";
 import TagChipGroup from "./TagChipGroup";
 
 export default {
@@ -93,20 +93,15 @@ export default {
     }
   },
 
-  data() {
-    return {
-      postImage: generatePostImage(this.page),
-      postDate: ''
-    }
+  computed: {
+    postImage() {
+      return generatePostImage(this.page)
+    },
+    postDate() {
+      const date = this.page.frontmatter.date;
+      const dateFormat = this.$themeConfig.dateFormat;
+      return date ? convertDatetimeToDate(date, dateFormat) : "";
+    },
   },
-
-  created() {
-    const date = this.page.frontmatter.date;
-    const dateFormat = this.$themeConfig.dateFormat;
-    if (date)
-      this.postDate = convertDatetimeToDate(date, dateFormat);
-    else
-      this.postDate = '';
-  }
 }
 </script>

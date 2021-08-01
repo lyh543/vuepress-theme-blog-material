@@ -2,11 +2,11 @@
   <v-chip
     link
     draggable
-    :color="tagInternal.color"
+    :color="color"
     text-color="white"
-    :to="tagInternal.path"
+    :to="tag.path"
   >
-    {{ tagInternal.name }}
+    {{ tagName }}
   </v-chip>
 </template>
 
@@ -36,27 +36,20 @@ const colors = [
 
 export default {
   props: {
-    tag: {
-      type: [Object, String],
-      required: true
+    tagName: {
+      type: String,
+      required: true,
     },
   },
 
-  data() {
-    return {
-      tagInternal: {},
-    };
-  },
-
-  created() {
-    const tag = this.tag;
-    if (typeof tag == 'string')
-      this.tagInternal = {name: tag, path: `/tag/${tag}/`}
-    else
-      this.tagInternal = Object.assign({}, tag);
-
-    const colorIndex = Math.abs(this.tagInternal.name.hashCode()) % colors.length;
-    this.tagInternal.color = colors[colorIndex];
+  computed: {
+    tag() {
+      return this.$tags.getItemByName(this.tagName);
+    },
+    color() {
+      const colorIndex = Math.abs(this.tagName.hashCode()) % colors.length;
+      return colors[colorIndex];
+    }
   }
 }
 </script>

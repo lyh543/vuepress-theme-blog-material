@@ -4,9 +4,9 @@
     column
   >
     <TagChip
-      v-for="tag in tags"
-      :key="tag.key"
-      :tag="tag"
+      v-for="tagName in tagNames"
+      :key="tagName"
+      :tag-name="tagName"
     />
   </v-chip-group>
 </template>
@@ -17,7 +17,7 @@ import TagChip from "./TagChip";
 export default {
   components: {TagChip},
   props: {
-    tags: {
+    tagNames: {
       type: Array,
       required: true
     }

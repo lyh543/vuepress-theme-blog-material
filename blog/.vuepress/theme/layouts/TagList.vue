@@ -1,9 +1,9 @@
 <template>
   <div class="blog-tags">
     <TagChip
-      v-for="tag in $frontmatterKey.list"
+      v-for="tag in $tags.list"
       :key="tag.name"
-      :tag="tag"
+      :tag-name="tag.name"
     />
   </div>
 </template>
@@ -12,5 +12,8 @@
 import TagChip from "../global-components/TagChip";
 export default {
   components: {TagChip},
+  // created() {
+  //   this.$router.push($front)
+  // }
 }
 </script>
