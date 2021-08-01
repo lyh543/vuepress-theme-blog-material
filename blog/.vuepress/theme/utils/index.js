@@ -1,14 +1,3 @@
-export const hashRE = /#.*$/
-export const extRE = /\.(md|html)$/
-export const endingSlashRE = /\/$/
-export const outboundRE = /^(https?:|mailto:|tel:)/
-
-export function normalize(path) {
-  return decodeURI(path)
-    .replace(hashRE, '')
-    .replace(extRE, '')
-}
-
 /**
  * find parent vm by ref
  * @param {String} ref

@@ -1,6 +1,34 @@
 const removeMd = require("remove-markdown");
 const path = require("path");
 
+/**
+ * get file name without extension
+ * @param filePath {String}
+ * @returns {String}
+ */
+function getFileNameWithoutExtension(filePath) {
+  return filePath
+    .match(/[^\/\\]+$/i)[0]  // get string after last /
+    .match(/^[^.]+/i)[0];    // get string before first .
+}
+
+
+/**
+ * guess headings from Markdown content
+ * @param content {String} Markdown content
+ * @returns {String | null} title,
+ */
+function getFirstMarkdownHeading(content) {
+  if (!content)
+    return null;
+  const headings = content.match(/# .+/);
+  if (headings.length > 0)
+    return headings[0].replace(/# +/, "");
+  else
+    return null;
+}
+
+
 module.exports = themeConfig => {
   // default config for themeConfig
   const defaultThemeConfig = {};
@@ -80,22 +108,14 @@ module.exports = themeConfig => {
       /*
        * Generate Title for posts if it exists in neither $page nor frontmatter
        */
-      if (!$page.title && !$page.frontmatter.title && _filePath) {
-        // get file name without extension
-        const defaultTitle = _filePath
-          .match(/[^\/\\]+$/i)[0]  // get string after last /
-          .match(/^[^.]+/i)[0];    // get string before first .
-        if (_strippedContent) {
-          // find all markdown headings
-          const headings = _strippedContent.match(/# .+/);
-          if (headings.length > 0)
-            $page.title = headings[0].replace(/# +/, "");
-          else
-            $page.title = defaultTitle;
-        } else {
-          $page.title = defaultTitle;
-        }
-        $page.frontmatter.title = $page.title;
+      if ($page.title) {
+        // do nothing
+      } else if ($page.frontmatter.title) {
+        $page.title = $page.frontmatter.title;
+      } else if (_filePath) {
+        const guessTitle = getFirstMarkdownHeading(_strippedContent);
+        const defaultTitle = getFileNameWithoutExtension(_filePath);
+        $page.title = guessTitle ? guessTitle : defaultTitle;
       }
     }
   };

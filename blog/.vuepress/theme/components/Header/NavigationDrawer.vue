@@ -32,10 +32,12 @@
       nav
     >
       <v-list-item-group color="primary">
+        <!--   fixme: after build: v-ripple can only be used on block-level elements -->
         <template v-for="item in items">
           <v-list-item
             :key="item.title"
             v-model="item.value"
+            :input-value="item.value"
             :to="item.to"
             :href="item.href"
             :target="item.href ? '_blank' : '_self'"
