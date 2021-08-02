@@ -8,7 +8,7 @@
       itemtype="https://schema.org/Person"
       itemscope
     >
-      <NavigationIcon />
+      <!--      <NavigationIcon />-->
       <span itemprop="name">{{ author }}</span>
       <span
         v-if="location"
@@ -19,7 +19,7 @@
       v-if="date"
       class="post-meta-date"
     >
-      <ClockIcon />
+      <!--      <ClockIcon />-->
       <time
         pubdate
         itemprop="datePublished"
@@ -43,14 +43,13 @@
 </template>
 
 <script>
-import {ClockIcon, NavigationIcon} from 'vue-feather-icons'
 import PostTag from './PostTag.vue'
 import {convertDatetimeToDate} from "../utils/posts";
 
 
 export default {
   name: 'PostMeta',
-  components: { NavigationIcon, ClockIcon, PostTag },
+  components: { PostTag },
   props: {
     tags: {
       type: [Array, String],

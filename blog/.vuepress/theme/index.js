@@ -29,39 +29,57 @@ function getFirstMarkdownHeading(content) {
 }
 
 
+/**
+ * an alternative of lodash/pick
+ * @param o {Object} origin of props
+ * @param props {Array<String>} names of props be picked
+ * @return {Object} a new object consisting of picked props from origin
+ */
+function pick(o, props) {
+  return Object.assign({}, ...props.map(prop => ({[prop]: o[prop]})));
+}
+
+
 module.exports = themeConfig => {
-  // default config for themeConfig
-  const defaultThemeConfig = {};
-  // default options for @vuepress/plugin-blog
-  const defaultBlogPluginOptions = {};
+  const {hostname} = themeConfig;
+  // default config of @vuepress/theme-plugin-blog
+  // https://vuepress-plugin-blog.ulivz.com/config/
+  const defaultBlogPluginOptions = {
+    sitemap: {hostname},
+    feed: {canonical_base: hostname},
+  };
 
-  themeConfig = Object.assign(themeConfig, defaultThemeConfig);
-
+  // move config from themeConfig to @vuepress/theme-plugin-blog
   const themeConfigPluginProperties = [
     "directories",
     "frontmatters",
     "globalPagination",
-    "sitemap",
     "comment",
     "newsletter",
-    "feed"
   ];
 
-  const pick = (o, props) => Object.assign({}, ...props.map(prop => ({[prop]: o[prop]})));
-  const themeConfigPluginOptions = pick(themeConfig, themeConfigPluginProperties);
-  const blogPluginOptions = Object.assign(
+  // set config of @vuepress/theme-plugin-blog
+  const pluginBlogConfig = Object.assign(
     {},
-    defaultBlogPluginOptions,
-    themeConfigPluginOptions
+    pick(themeConfig, themeConfigPluginProperties),
+    defaultBlogPluginOptions
   );
-  const plugins = [["@vuepress/blog", blogPluginOptions]];
+
+  const plugins = [
+    ["@vuepress/blog", pluginBlogConfig],
+    'vuepress-plugin-smooth-scroll',
+    'vuepress-plugin-table-of-contents',
+    ['@maginapp/vuepress-plugin-katex', {delimiters: 'dollars'}],
+    ['@vuepress/plugin-medium-zoom', {selector: 'img'}],
+    ["@vuepress/plugin-pwa", {serviceWorker: true, updatePopup: true, popupComponent: 'PwaSnackbar'}],
+    ['@vuepress/plugin-search', {searchMaxSuggestions: 10}],
+    ['vuepress-plugin-clean-urls', {normalSuffix: '/'}],
+  ];
 
   const config = {
     plugins,
     define: {
-      THEME_BLOG_PAGINATION_COMPONENT: themeConfig.paginationComponent
-        ? themeConfig.paginationComponent
-        : "Pagination"
+      THEME_BLOG_PAGINATION_COMPONENT: "SimplePagination"
     },
     alias: {
       '@style': path.resolve(__dirname, 'styles'),
@@ -79,7 +97,7 @@ module.exports = themeConfig => {
         frontmatter,         // page's frontmatter object
         regularPath,         // current page's default link (follow the file hierarchy)
         path,                // current page's real link (use regularPath when permalink does not exist)
-      } = $page
+      } = $page;
 
       /*
        * i don't know why building failed if we removed the '_posts' from regularPath
@@ -89,24 +107,7 @@ module.exports = themeConfig => {
       //   $page.regularPath = regularPath.substr(7);
 
       /*
-       * Generate summary.
-       * description in frontmatter > generated summary
-       */
-      if ($page.frontmatter.summary) {
-        $page.frontmatter.description = $page.frontmatter.summary;
-      } else if (_strippedContent && themeConfig.summary) {
-        $page.summary =
-          removeMd(
-            _strippedContent
-              .trim()
-              .replace(/^#+\s+(.*)/, "")
-              .slice(0, themeConfig.summaryLength)
-          ) + " ...";
-        $page.frontmatter.description = $page.summary;
-      }
-
-      /*
-       * Generate Title for posts if it exists in neither $page nor frontmatter
+       * Generate title for posts if it exists in neither $page nor frontmatter
        */
       if ($page.title) {
         // do nothing
@@ -116,6 +117,22 @@ module.exports = themeConfig => {
         const guessTitle = getFirstMarkdownHeading(_strippedContent);
         const defaultTitle = getFileNameWithoutExtension(_filePath);
         $page.title = guessTitle ? guessTitle : defaultTitle;
+      }
+
+      /*
+       * Generate summary for posts if not exists in frontmatter
+       */
+      if ($page.frontmatter.summary) {
+        $page.frontmatter.description = $page.frontmatter.summary;
+      } else if (_strippedContent) {
+        $page.summary =
+          removeMd(
+            _strippedContent
+              .trim()
+              .replace(/^#+\s+(.*)/, "")
+              .slice(0, 200)
+          ) + " ...";
+        $page.frontmatter.description = $page.summary;
       }
     }
   };

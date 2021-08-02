@@ -2,60 +2,44 @@ const path = require("path");
 
 const hostname = 'https://vuepress-theme-blog-material.netlify.app/';
 
+// https://vuepress.vuejs.org/config/
 module.exports = {
   title: 'vuepress-theme-blog-material',
   description: '正在开发中的 Material Design 风格 Vuepress',
   author: 'lyh543',
   email: 'lyh543@outlook.com',
-
   port: 4000,
   dest: 'dist',
-  // todo: 搞个新的 public 文件夹
-
+  // todo: change default public folder
   head: [
     ['link', {rel: 'icon', href: '/img/favicon.png'}]
   ],
-
+  // todo: add more patterns
+  patterns: ['**/*.md', '**/*.vue'],
+  // https://vuepress.vuejs.org/config/#markdown
+  // todo: add more markdown settings
   markdown: {
     // todo: line numbers
     lineNumbers: false,
     toc: {includeLevel: [2, 3, 4]}
   },
 
+  /*
+   * you can add your plugins here.
+   * you can see which plugins are added by theme in 'theme/index.html'
+   */
   plugins: [
-    'vuepress-plugin-smooth-scroll',
-    'vuepress-plugin-table-of-contents',
-    ['@maginapp/vuepress-plugin-katex', {delimiters: 'dollars'}],
-    ['@vuepress/plugin-medium-zoom', {selector: 'img'}],
-    ["@vuepress/plugin-pwa", {serviceWorker: true, updatePopup: true, popupComponent: 'PwaSnackbar'}],
-    ['@vuepress/plugin-search', {searchMaxSuggestions: 10}],
-    ['vuepress-plugin-clean-urls', {normalSuffix: '/'}],
-    ['vuepress-plugin-sitemap', {hostname}],
+
   ],
 
-  extendPageData($page) {
-    const {
-      _filePath,           // file's absolute path
-      _computed,           // access the client global computed mixins at build time, e.g _computed.$localePath.
-      _content,            // file's raw content string
-      _strippedContent,    // file's content string without frontmatter
-      key,                 // page's unique hash key
-      frontmatter,         // page's frontmatter object
-      regularPath,         // current page's default link (follow the file hierarchy)
-      path,                // current page's real link (use regularPath when permalink does not exist)
-    } = $page
-
-    // 去除链接中的 _posts
-    if (regularPath.startsWith('/_posts'))
-      $page.regularPath = regularPath.substr('/_posts'.length);
-    // fixme： 去掉 .html
-    //  clean-urls 无效，是不是上面的问题？
-  },
-
   theme: './theme',
+  /*
+   * themeConfig can read in ./theme/index.js
+   * and can be read as 'this.$themeConfig' in Vue Component
+   */
   themeConfig: {
     dateFormat: 'YYYY-MM-DD',
-
+    hostname: hostname,
 
     // nav 和 footer.contact 的图标默认来源：https://materialdesignicons.com/
     // footer.contact 也可以使用自己的图标（参考 bilibili 图标的格式）
@@ -85,7 +69,9 @@ module.exports = {
       ],
     },
 
-    // Ref: https://vuepress-theme-blog.ulivz.com/config/#directories
+    /****** The following themeConfig will be copied to config of @vuepress/plugin-blog ******/
+
+    // Ref: https://vuepress-plugin-blog.ulivz.com/config/#directories
     directories: [
       {
         id: 'post',
@@ -101,7 +87,7 @@ module.exports = {
       },
     ],
 
-    // Ref: https://vuepress-theme-blog.ulivz.com/config/#frontmatters
+    // Ref: https://vuepress-plugin-blog.ulivz.com/config/#frontmatters
     frontmatters: [
       {
         id: "tags",
@@ -114,15 +100,12 @@ module.exports = {
       },
     ],
 
-    // Ref: https://vuepress-theme-blog.ulivz.com/config/#globalpagination
+    // Ref: https://vuepress-plugin-blog.ulivz.com/config/#globalpagination
     globalPagination: {
       lengthPerPage: 10,
     },
 
-    // Ref: https://vuepress-theme-blog.ulivz.com/config/#sitemap
-    sitemap: {hostname},
-
-    // Ref: https://vuepress-theme-blog.ulivz.com/config/#comment
+    // Ref: https://vuepress-plugin-blog.ulivz.com/config/#comment
     // comment: {
     //   service: 'vssue',
     //   owner: 'lyh543',
@@ -131,22 +114,32 @@ module.exports = {
     //   clientSecret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
     // },
 
-    // Ref: https://vuepress-theme-blog.ulivz.com/config/#feed
-    feed: {
-      canonical_base: hostname,
-      feeds: {
-        rss: {enable: true},    // rss.xml
-        atom: {enable: true},   // feed.atom
-        json: {enable: true},   // feed.json
-      }
-    },
+    /****** The themeConfig above will be copied to config of @vuepress/plugin-blog ******/
+  },
 
-    // Ref: https://vuepress-theme-blog.ulivz.com/config/#summary
-    summary: true,
-    summaryLength: 200,
+  // todo: render css as stylus
+  Stylus: {
 
-    // Ref: https://vuepress-theme-blog.ulivz.com/config/#paginationcomponent
-    paginationComponent: 'SimplePagination',
+  },
+  evergreen: true,
+
+  extendPageData($page) {
+    const {
+      _filePath,           // file's absolute path
+      _computed,           // access the client global computed mixins at build time, e.g _computed.$localePath.
+      _content,            // file's raw content string
+      _strippedContent,    // file's content string without frontmatter
+      key,                 // page's unique hash key
+      frontmatter,         // page's frontmatter object
+      regularPath,         // current page's default link (follow the file hierarchy)
+      path,                // current page's real link (use regularPath when permalink does not exist)
+    } = $page
+
+    // 去除链接中的 _posts
+    if (regularPath.startsWith('/_posts'))
+      $page.regularPath = regularPath.substr('/_posts'.length);
+    // fixme： 去掉 .html
+    //  clean-urls 无效，是不是上面的问题？
   },
 
   configureWebpack: {
