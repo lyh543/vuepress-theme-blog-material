@@ -1,5 +1,7 @@
 const path = require("path");
 
+const hostname = 'https://vuepress-theme-blog-material.netlify.app/';
+
 module.exports = {
   title: 'vuepress-theme-blog-material',
   description: '正在开发中的 Material Design 风格 Vuepress',
@@ -28,7 +30,7 @@ module.exports = {
     ["@vuepress/plugin-pwa", {serviceWorker: true, updatePopup: true, popupComponent: 'PwaSnackbar'}],
     ['@vuepress/plugin-search', {searchMaxSuggestions: 10}],
     ['vuepress-plugin-clean-urls', {normalSuffix: '/'}],
-    ['vuepress-plugin-sitemap', {hostname: 'https://vuepress-theme-blog-material.netlify.app/'}],
+    ['vuepress-plugin-sitemap', {hostname}],
   ],
 
   extendPageData($page) {
@@ -118,9 +120,7 @@ module.exports = {
     },
 
     // Ref: https://vuepress-theme-blog.ulivz.com/config/#sitemap
-    sitemap: {
-      hostname: 'https://vuepress-theme-blog-material.netlify.app/'
-    },
+    sitemap: {hostname},
 
     // Ref: https://vuepress-theme-blog.ulivz.com/config/#comment
     // comment: {
@@ -133,7 +133,7 @@ module.exports = {
 
     // Ref: https://vuepress-theme-blog.ulivz.com/config/#feed
     feed: {
-      canonical_base: 'https://vuepress-theme-blog-material.netlify.app/',
+      canonical_base: hostname,
       feeds: {
         rss: {enable: true},    // rss.xml
         atom: {enable: true},   // feed.atom
