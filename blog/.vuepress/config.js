@@ -10,6 +10,7 @@ module.exports = {
   email: 'lyh543@outlook.com',
   port: 4000,
   dest: 'dist',
+  locales: {'/': {lang: 'en-US'}},
   // todo: change default public folder
   head: [
     ['link', {rel: 'icon', href: '/img/favicon.png'}]

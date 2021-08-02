@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import ScreenInfo from "./module/ScreenInfo";
+import ScreenInfo from "../components/debug-module/ScreenInfo";
 
 export default {
   components: {ScreenInfo},

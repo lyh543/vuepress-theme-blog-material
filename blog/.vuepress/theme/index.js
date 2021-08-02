@@ -76,7 +76,9 @@ module.exports = themeConfig => {
     ['vuepress-plugin-clean-urls', {normalSuffix: '/'}],
   ];
 
-  const config = {
+  // return Option API. see:
+  // https://vuepress.vuejs.org/zh/plugin/option-api.html
+  return {
     plugins,
     define: {
       THEME_BLOG_PAGINATION_COMPONENT: "SimplePagination"
@@ -86,7 +88,11 @@ module.exports = themeConfig => {
       '@config': path.resolve(__dirname, '../config.js'),
       '@public': path.resolve(__dirname, '../public'),
     },
-
+    // https://vuepress.vuejs.org/zh/plugin/option-api.html#additionalpages
+    additionalPages: {
+      path: '/debug',
+      frontmatter: {layout: 'Debug'},
+    },
     extendPageData($page) {
       const {
         _filePath,           // file's absolute path
@@ -136,5 +142,4 @@ module.exports = themeConfig => {
       }
     }
   };
-  return config;
 };
