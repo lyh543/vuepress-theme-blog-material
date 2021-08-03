@@ -21,8 +21,5 @@ module.exports = {
         shouldMatchCase: false
       }
     ],
-
-    "vue/prop-name-casing": 0,
-    "vue/require-default-prop": 0
   }
 };
