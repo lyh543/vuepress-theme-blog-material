@@ -67,7 +67,6 @@ module.exports = themeConfig => {
 
   const plugins = [
     ["@vuepress/blog", pluginBlogConfig],
-    'vuepress-plugin-smooth-scroll',
     'vuepress-plugin-table-of-contents',
     ['@maginapp/vuepress-plugin-katex', {delimiters: 'dollars'}],
     ['@vuepress/plugin-medium-zoom', {selector: 'img'}],

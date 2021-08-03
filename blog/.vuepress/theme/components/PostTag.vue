@@ -1,7 +1,7 @@
 <!--todo: delete -->
 <template>
   <li class="post-tag">
-    <router-link :to="'/tag/' + tag">
+    <router-link :to="'/tags/' + tag">
       <span>{{ tag }}</span>
     </router-link>
   </li>

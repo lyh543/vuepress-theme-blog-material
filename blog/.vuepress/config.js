@@ -47,7 +47,7 @@ module.exports = {
     // 博客内链接请使用 to，外部链接请使用 href
     nav: [
       {text: '博客', iconOn: 'mdi-home', iconOff: 'mdi-home-outline', to: '/'},
-      {text: '标签', iconOn: 'mdi-tag-multiple', iconOff: 'mdi-tag-multiple-outline', to: '/tag/'},
+      {text: '标签', iconOn: 'mdi-tag-multiple', iconOff: 'mdi-tag-multiple-outline', to: '/tags/'},
       {text: '时间线', iconOn: 'mdi-timeline', iconOff: 'mdi-timeline-outline', to: '/timeline/'},
       {text: '关于我', iconOn: 'mdi-account', iconOff: 'mdi-account-outline', to: '/about/'},
       {text: 'RSS', iconOn: 'mdi-rss', iconOff: 'mdi-rss', href: '/feed.atom'},
@@ -92,8 +92,8 @@ module.exports = {
     frontmatters: [
       {
         id: "tags",
-        keys: ['tag', 'tags'],
-        path: '/tag/',
+        keys: ['tags'],
+        path: '/tags/',
         title: '标签',
         layout: 'TagList',
         scopeLayout: 'PostList',

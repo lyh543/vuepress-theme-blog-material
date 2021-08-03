@@ -1,7 +1,7 @@
 ---
 title: tips for developing vuepress theme
 date: 2021-08-01
-tag:
+tags:
 - vuepress
 ---
 
@@ -76,7 +76,7 @@ module.exports = {
 
 
 
-## tag
+## tags
 
 You can read all tags by `$tags` in any page. This object can be read as Map or Array.
 
@@ -88,7 +88,7 @@ this.$tags.getItemByName('markdown')
 result == {
   "key": "markdown",
   "scope": "tags",
-  "path": "/tag/markdown/",
+  "path": "/tags/markdown/",
   "pageKeys": [],
   "pages": []
 }
@@ -102,17 +102,17 @@ this.$tags.list[0] // if markdown is the first tag
 result == {
   "name": "markdown",
   "pages": [],
-  "path": "/tag/markdown/"
+  "path": "/tags/markdown/"
 }
 ```
 
-if you are at `/tag/markdown/`, you can read `$currentTags`:
+if you are at `/tags/markdown/`, you can read `$currentTags`:
 
 ```js
 this.$currentTags == {
   "key": "markdown",
   "scope": "tags",
-  "path": "/tag/markdown/",
+  "path": "/tags/markdown/",
   "pageKeys": [],
   "pages": []
 }
