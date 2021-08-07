@@ -47,18 +47,7 @@
         </v-img>
 
         <v-card-text class="post-summary">
-          <ClientOnly v-if="page.excerpt">
-            <!-- eslint-disable vue/no-v-html -->
-            <p
-              itemprop="description"
-              v-html="page.excerpt"
-            />
-            <!-- eslint-enable vue/no-v-html -->
-          </ClientOnly>
-          <p
-            v-else
-            itemprop="description"
-          >
+          <p itemprop="description">
             {{ page.frontmatter.summary || page.summary }}
           </p>
         </v-card-text>
