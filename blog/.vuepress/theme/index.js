@@ -66,7 +66,7 @@ module.exports = themeConfig => {
   );
 
   const plugins = [
-    ["@vuepress/blog", pluginBlogConfig],
+    ["@vuepress/plugin-blog", pluginBlogConfig],
     'vuepress-plugin-table-of-contents',
     ['@maginapp/vuepress-plugin-katex', {delimiters: 'dollars'}],
     ['@vuepress/plugin-medium-zoom', {selector: 'img'}],
@@ -88,10 +88,12 @@ module.exports = themeConfig => {
       '@public': path.resolve(__dirname, '../public'),
     },
     // https://vuepress.vuejs.org/zh/plugin/option-api.html#additionalpages
-    additionalPages: {
-      path: '/debug',
-      frontmatter: {layout: 'Debug'},
-    },
+    additionalPages: [
+      {
+        path: '/debug',
+        frontmatter: {layout: 'Debug'},
+      }
+    ],
     extendPageData($page) {
       const {
         _filePath,           // file's absolute path

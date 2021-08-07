@@ -12,7 +12,7 @@
       >
         <v-col
           cols="12"
-          md="9"
+          sm="9"
           class="pa-5"
         >
           <PostEntryCard

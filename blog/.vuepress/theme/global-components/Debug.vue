@@ -3,7 +3,7 @@
     <v-row class="justify-center">
       <v-col
         cols="12"
-        md="8"
+        sm="8"
       >
         <v-expansion-panels>
           <ClientOnly>

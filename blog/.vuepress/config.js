@@ -139,8 +139,6 @@ module.exports = {
     // 去除链接中的 _posts
     if (regularPath.startsWith('/_posts'))
       $page.regularPath = regularPath.substr('/_posts'.length);
-    // fixme： 去掉 .html
-    //  clean-urls 无效，是不是上面的问题？
   },
 
   configureWebpack: {

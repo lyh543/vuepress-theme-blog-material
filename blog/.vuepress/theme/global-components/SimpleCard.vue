@@ -5,7 +5,7 @@
     <v-row class="justify-center">
       <v-col
         :cols="cols"
-        :md="md"
+        :sm="sm"
       >
         <v-card v-bind="$attrs">
           <!-- 将多余属性绑定到 v-card 上  -->
@@ -33,13 +33,13 @@
 export default {
   inheritAttrs: false,
   props: {
-    // 移动设备的列数
+    // columns on mobile
     cols: {
       type: [Number, String],
       default: 12
     },
-    // PC 上的列数
-    md: {
+    // columns on PC
+    sm: {
       type: [Number, String],
       default: 8
     }

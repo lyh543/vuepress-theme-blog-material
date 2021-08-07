@@ -12,9 +12,9 @@
         <component :is="layout" />
       </v-fade-transition>
     </v-main>
-    <ClientOnly>
-      <BackToTop />
-    </ClientOnly>
+    <!--    <ClientOnly>-->
+    <!--      <BackToTop />-->
+    <!--    </ClientOnly>-->
     <Footer />
   </v-app>
 </template>
@@ -22,13 +22,11 @@
 <script>
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer'
-import BackToTop from "../global-components/BackToTop";
 import Layout from "./Layout";
 import NotFound from "./NotFound";
 
 export default {
   components: {
-    BackToTop,
     Header,
     Footer,
   },
