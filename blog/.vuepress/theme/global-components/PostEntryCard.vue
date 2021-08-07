@@ -38,12 +38,10 @@
               class="post-entry-card-subtitle"
             >
               <time
-                pubdate
                 itemprop="datePublished"
                 :datetime="page.frontmatter.date"
-              >
-                {{ postDate }}
-              </time>
+                v-text="postDate"
+              />
             </v-card-subtitle>
           </div>
         </v-img>
