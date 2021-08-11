@@ -22,7 +22,7 @@
       </v-list-item>
     </header>
 
-    <v-list>
+    <v-list v-if="!!($page.headers && $page.headers.length)">
       <v-subheader>TABLE OF CONTENTS</v-subheader>
       <Toc />
     </v-list>
