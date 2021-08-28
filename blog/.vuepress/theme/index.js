@@ -1,5 +1,6 @@
 const removeMd = require("remove-markdown");
 const path = require("path");
+const moment = require('moment');
 
 /**
  * get file name without extension
@@ -40,6 +41,10 @@ function pick(o, props) {
 }
 
 
+function timeTransformer(timestamp) {
+  return moment(timestamp).format('YYYY-MM-DD HH:mm:ss');
+}
+
 module.exports = themeConfig => {
   const {hostname} = themeConfig;
   // default config of @vuepress/theme-plugin-blog
@@ -72,6 +77,7 @@ module.exports = themeConfig => {
     ['@vuepress/plugin-medium-zoom', {selector: 'img'}],
     ["@vuepress/plugin-pwa", {serviceWorker: true, updatePopup: true, popupComponent: 'PwaSnackbar'}],
     ['@vuepress/plugin-search', {searchMaxSuggestions: 10}],
+    ['@vuepress/plugin-last-updated', {transformer: timeTransformer}],
     ['vuepress-plugin-clean-urls', {normalSuffix: '/'}],
   ];
 
@@ -130,8 +136,6 @@ module.exports = themeConfig => {
         const defaultTitle = getFileNameWithoutExtension(_filePath);
         $page.title = guessTitle ? guessTitle : defaultTitle;
       }
-
-      console.log(frontmatter);
 
       /*
        * Generate summary for posts if not exists in frontmatter

@@ -10,7 +10,7 @@ module.exports = {
   email: 'lyh543@outlook.com',
   port: 4000,
   dest: 'dist',
-  locales: {'/': {lang: 'en-US'}},
+  locales: {'/': {lang: 'zh-CN'}},
   // todo: change default public folder
   head: [
     ['link', {rel: 'icon', href: '/img/favicon.png'}]
@@ -97,7 +97,6 @@ module.exports = {
         title: '标签',
         layout: 'TagList',
         scopeLayout: 'PostList',
-        // todo: 去掉 vue-route 对 tags 的警告
       },
     ],
 
