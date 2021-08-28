@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import {convertDatetimeToDate} from "../utils/posts";
+import {getPostDateOrLastUpdated} from "../utils/posts";
 import {colors} from "../utils/constants";
 
 export default {
@@ -65,8 +65,7 @@ export default {
     const posts = this.$site.pages
       .filter(page => page.id === 'post')
       .map(post => {
-        const date = post.frontmatter.date;
-        post.postDate = date ? convertDatetimeToDate(date, dateFormat) : "";
+        post.postDate = getPostDateOrLastUpdated(post, dateFormat);
         return post;
       })
       .sort((post1, post2) => (post1.postDate < post2.postDate ? 1 : -1));
@@ -75,8 +74,7 @@ export default {
      * and insert a date node when the current post and the previous post are posted in different month
      */
     for (let i = 0; i < posts.length; i++) {
-      if (posts[i].postDate.length > 0
-        && (i === 0 || posts[i].postDate.slice(0, 7) !== posts[i - 1].postDate.slice(0, 7))) {
+      if (i === 0 || posts[i].postDate.slice(0, 7) !== posts[i - 1].postDate.slice(0, 7)) {
         this.timelineNodes.push({
           isDate: true,
           date: posts[i].postDate.slice(0, 7)

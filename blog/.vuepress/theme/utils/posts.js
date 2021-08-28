@@ -34,6 +34,43 @@ export function convertDatetimeToDate(datetime, dateFormat = 'YYYY-MM-DD') {
   return moment(new Date(datetime)).format(dateFormat);
 }
 
+
+/**
+ * get postDate of a post
+ * @param post
+ * @param dateFormat {string}
+ * @returns {string}
+ */
+export function getPostDate(post, dateFormat = 'YYYY-MM-DD') {
+  const date = post.frontmatter.date;
+  return date ? convertDatetimeToDate(date, dateFormat) : "";
+}
+
+
+/**
+ * get lastUpdated of a post
+ * @param post
+ * @param dateFormat {string}
+ * @returns {string}
+ */
+export function getLastUpdatedDate(post, dateFormat = 'YYYY-MM-DD') {
+  const date = post.lastUpdated;
+  return date ? convertDatetimeToDate(date, dateFormat) : "";
+}
+
+
+/**
+ * get postDate of a post. If postDate is null, get lastUpdated instead
+ * @param post
+ * @param dateFormat {string}
+ * @returns {string}
+ */
+export function getPostDateOrLastUpdated(post, dateFormat = 'YYYY-MM-DD') {
+  const date = post.frontmatter.date ? post.frontmatter.date : post.lastUpdated;
+  return date ? convertDatetimeToDate(date, dateFormat) : "";
+}
+
+
 /**
  * build a Vuetify TreeView of Toc by VuePress headers
  * @param headers {Array<{title, slug, level}>}

@@ -68,7 +68,7 @@
 
 <script>
 import PicturePlaceholderAlt from "./PicturePlaceholderAlt";
-import {convertDatetimeToDate, generatePostImage} from "../utils/posts";
+import {generatePostImage, getPostDateOrLastUpdated} from "../utils/posts";
 import TagChipGroup from "./TagChipGroup";
 
 export default {
@@ -85,9 +85,7 @@ export default {
       return generatePostImage(this.page)
     },
     postDate() {
-      const date = this.page.frontmatter.date;
-      const dateFormat = this.$themeConfig.dateFormat;
-      return date ? convertDatetimeToDate(date, dateFormat) : "";
+      return getPostDateOrLastUpdated(this.page, this.$themeConfig.dateFormat);
     },
   },
 }
