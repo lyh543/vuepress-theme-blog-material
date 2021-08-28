@@ -92,11 +92,11 @@ module.exports = themeConfig => {
     additionalPages: [
       {
         path: '/debug/',
-        frontmatter: {layout: 'Debug'},
+        frontmatter: {layout: 'Debug', title: '调试信息'},
       },
       {
         path: '/timeline/',
-        frontmatter: {layout: 'Timeline'}
+        frontmatter: {layout: 'Timeline', title: '时间线'}
       },
     ],
     extendPageData($page) {
@@ -130,6 +130,8 @@ module.exports = themeConfig => {
         const defaultTitle = getFileNameWithoutExtension(_filePath);
         $page.title = guessTitle ? guessTitle : defaultTitle;
       }
+
+      console.log(frontmatter);
 
       /*
        * Generate summary for posts if not exists in frontmatter

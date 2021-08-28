@@ -45,7 +45,33 @@ class ClientComputedMixin {
 
 ---------------------
 
-To change `$page.title`, you should change it in `extendPageData()` in `config.js` or `theme/index.js`:
+To change `$page.title`, you have different ways:
+
+1. If you are adding title for one specific markdown page, just write a frontmatter:
+
+```md
+title: Your title
+---
+
+<!-- Put Your Markdown After Front Matter -->
+```
+
+2. If you are adding for one [additional page](https://vuepress.vuejs.org/zh/plugin/option-api.html#additionalpages) in `index.js`, just add title here:
+
+```js
+additionalPages: [
+  {
+    path: '/debug/',
+    frontmatter: {layout: 'Debug', title: '调试信息'},
+  },
+  {
+    path: '/timeline/',
+    frontmatter: {layout: 'Timeline', title: '时间线'}
+  },
+]
+```
+
+3. If you are handling many pages based on some rules, you can write your rules in `extendPageData()` in `config.js` or `theme/index.js`:
 
 ```js
 if (!$page.title && !$page.frontmatter.title && _filePath) {
@@ -65,6 +91,8 @@ if (!$page.title && !$page.frontmatter.title && _filePath) {
     }
 }
 ```
+
+-------------
 
 To change `$site.title`, you should change your config in `config.js`:
 
