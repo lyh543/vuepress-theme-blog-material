@@ -88,11 +88,16 @@ module.exports = themeConfig => {
       '@public': path.resolve(__dirname, '../public'),
     },
     // https://vuepress.vuejs.org/zh/plugin/option-api.html#additionalpages
+    // additional routes
     additionalPages: [
       {
-        path: '/debug',
+        path: '/debug/',
         frontmatter: {layout: 'Debug'},
-      }
+      },
+      {
+        path: '/timeline/',
+        frontmatter: {layout: 'Timeline'}
+      },
     ],
     extendPageData($page) {
       const {

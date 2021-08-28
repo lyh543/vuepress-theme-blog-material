@@ -102,9 +102,14 @@ export default {
       let now = Date.now();
       if (now - this.latestClick > 500) // 0.5 秒未点击就视为不连续
         this.clickTotal = 0;
-      this.clickTotal++;
-      if (this.clickTotal > 5) this.$router.push('/debug');
-      this.latestClick = now;
+      if (this.clickTotal > 5) {
+        this.$router.push('/debug/');
+        this.clickTotal = 0;
+      }
+      else {
+        this.clickTotal++;
+        this.latestClick = now;
+      }
     },
   }
 };

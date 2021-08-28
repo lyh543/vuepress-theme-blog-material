@@ -13,7 +13,7 @@
     >
     <router-link
       :to="page.path"
-      class="post-entry"
+      class="no-decoration"
     >
       <v-card ripple>
         <v-img

@@ -38,6 +38,6 @@ export default {
         return NotFound;
       return Layout;
     }
-  }
+  },
 }
 </script>
