@@ -1,38 +1,47 @@
 <template>
   <v-list :v-ripple="false">
     <header>
-      <v-list-item v-if="postDate">
-        <v-list-item-icon>
-          <v-icon>mdi-text-box-plus-outline</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <time
-            itemprop="datePublished"
-            :datetime="$page.frontmatter.date"
-            v-text="postDate"
-          />
-        </v-list-item-content>
-      </v-list-item>
+      <ListItem
+        v-if="postDate"
+        icon="mdi-text-box-plus-outline"
+        tooltip="创建日期"
+        tooltip-position="left"
+      >
+        <time
+          itemprop="datePublished"
+          :datetime="$page.frontmatter.date"
+          v-text="postDate"
+        />
+      </ListItem>
 
-      <v-list-item v-if="lastUpdated">
-        <v-list-item-icon>
-          <v-icon>mdi-pencil</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <time
-            itemprop="lastUpdated"
-            :datetime="$page.lastUpdated"
-            v-text="lastUpdated"
-          />
-        </v-list-item-content>
-      </v-list-item>
+      <ListItem
+        v-if="lastUpdated"
+        icon="mdi-pencil"
+        tooltip="最后修改"
+        tooltip-position="left"
+      >
+        <time
+          itemprop="lastUpdated"
+          :datetime="$page.lastUpdated"
+          v-text="lastUpdated"
+        />
+      </ListItem>
 
-      <v-list-item v-if="postTags">
-        <v-list-item-icon>
-          <v-icon>mdi-tag</v-icon>
-        </v-list-item-icon>
-        <TagChipGroup :tag-names="postTags" />
-      </v-list-item>
+      <ListItem
+        v-if="postTags"
+        icon="mdi-tag"
+        tooltip="标签"
+        tooltip-position="left"
+      >
+        <div>
+        <TagChip
+          v-for="tagName in postTags"
+          :key="tagName"
+          :tag-name="tagName"
+          class="mb-2 mr-2"
+        />
+        </div>
+      </ListItem>
     </header>
 
     <v-list v-if="!!($page.headers && $page.headers.length)">
@@ -45,10 +54,11 @@
 <script>
 import Toc from "./Toc";
 import {getLastUpdatedDate, getPostDate} from "../utils/posts";
-import TagChipGroup from "../global-components/TagChipGroup";
+import TagChip from "../global-components/TagChip";
+import ListItem from "../global-components/ListItem";
 
 export default {
-  components: {TagChipGroup, Toc},
+  components: {ListItem, TagChip, Toc},
   computed: {
     postDate() {
       return getPostDate(this.$page, this.$themeConfig.dateFormat)

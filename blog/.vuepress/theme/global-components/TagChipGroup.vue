@@ -1,8 +1,5 @@
 <template>
-  <v-chip-group
-    class="tag-chip-group"
-    column
-  >
+  <v-chip-group column>
     <TagChip
       v-for="tagName in tagNames"
       :key="tagName"

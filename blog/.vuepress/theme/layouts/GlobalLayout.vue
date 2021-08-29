@@ -20,15 +20,19 @@
 </template>
 
 <script>
-import Header from '../components/Header/Header'
-import Footer from '../components/Footer'
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer';
 import Layout from "./Layout";
 import NotFound from "./NotFound";
+import PostList from "./PostList";
+import Post from "./Post";
 
 export default {
   components: {
     Header,
     Footer,
+    Post,
+    PostList,
   },
   computed: {
     layout() {
