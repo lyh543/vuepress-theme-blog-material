@@ -5,12 +5,26 @@
     hoverable
     transition
     :items="tree"
-    @update:active="gotoAnchor"
+    @update:active="clickToc"
   />
 </template>
 
 <script>
 import {buildTocTree} from "../utils/posts";
+import $ from 'jquery';
+
+
+function jumpToAnchor(hash) {
+  // Using jQuery's animate() method to add smooth page scroll
+  // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+  $('html, body').animate({
+    scrollTop: $(hash).offset().top - 56
+  }, 800, function(){
+    // Add hash (#) to URL when done scrolling (default click behavior)
+    window.location.hash = hash;
+  });
+}
+
 
 export default {
   computed: {
@@ -20,29 +34,21 @@ export default {
   },
 
   mounted() {
-    // smooth scrolling when clicking an anchor link
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
+    // for
+    $("a").on('click', function(event) {
+      // Make sure this.hash has a value before overriding default behavior
+      if (this.hash !== "") {
+        jumpToAnchor(this.hash);
+      }
     });
   },
 
   methods: {
-    gotoAnchor(event) {
-      console.log(event);
+    clickToc(event) {
       if (event.length > 0) {
-        // fixme: bug
-        // window.location.href = '#' + event[0];
-        var url = location.href;               //Save down the URL without hash.
-        location.href = "#" + event[0];                 //Go to the target element.
-        history.replaceState(null, null, url);   //Don't like hashes. Changing it back.
+        jumpToAnchor(`#${event[0]}`);
       }
-    }
+    },
   }
 }
 </script>
@@ -50,5 +56,10 @@ export default {
 <style lang="stylus">
 .toc-link
   text-decoration: none
-  color: rgba(0,0,0,0.87)
+  color: rgba(0, 0, 0, 0.87)
+
+//:target
+//  padding-top: 65px;
+//  margin-top: -65px;
+
 </style>

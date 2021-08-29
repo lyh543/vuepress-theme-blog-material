@@ -93,7 +93,7 @@ export function buildTocTree(headers) {
     let father = root;
     for (let i = 0; i < level; i++) {
       // it may happen when
-      // a node of level 4 will be pushed into childrens of a node of level 2
+      // a node of level 4 will be pushed into children of a node of level 2
       if (father.children.length === 0)
         father.children.push(createNode());
       father = father.children[father.children.length-1];
@@ -110,6 +110,7 @@ export function buildTocTree(headers) {
   let children = root.children;
   // if a child is the only child of root, and is created by function
   // then we can substitute its child for root
+  // to make the tree simpler
   while (children.length === 1 && children[0].name === '')
     children = children[0].children;
   return children;

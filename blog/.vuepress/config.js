@@ -22,7 +22,8 @@ module.exports = {
   markdown: {
     // todo: line numbers
     lineNumbers: false,
-    toc: {includeLevel: [2, 3, 4]}
+    // fixme: includeLevel is still [2, 3]
+    toc: {includeLevel: [1, 2, 3, 4]}
   },
 
   /*

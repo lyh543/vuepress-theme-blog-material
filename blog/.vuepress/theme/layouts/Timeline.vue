@@ -34,8 +34,11 @@
                   {{ node.postDate.slice(5) }}
                 </v-col>
                 <v-col>
-                  <router-link :to="node.path" class="no-decoration">
-                  <strong>{{ node.title }}</strong>
+                  <router-link
+                    :to="node.path"
+                    class="no-decoration"
+                  >
+                    <strong>{{ node.title }}</strong>
                   </router-link>
                 </v-col>
               </v-row>

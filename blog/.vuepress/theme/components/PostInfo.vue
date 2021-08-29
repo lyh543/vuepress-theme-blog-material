@@ -31,13 +31,13 @@
         <v-list-item-icon>
           <v-icon>mdi-tag</v-icon>
         </v-list-item-icon>
-        <TagChipGroup :tag-names="postTags"/>
+        <TagChipGroup :tag-names="postTags" />
       </v-list-item>
     </header>
 
     <v-list v-if="!!($page.headers && $page.headers.length)">
       <v-subheader>TABLE OF CONTENTS</v-subheader>
-      <Toc/>
+      <Toc />
     </v-list>
   </v-list>
 </template>
