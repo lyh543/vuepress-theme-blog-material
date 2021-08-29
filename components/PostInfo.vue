@@ -34,12 +34,12 @@
         tooltip-position="left"
       >
         <div>
-        <TagChip
-          v-for="tagName in postTags"
-          :key="tagName"
-          :tag-name="tagName"
-          class="mb-2 mr-2"
-        />
+          <TagChip
+            v-for="tagName in postTags"
+            :key="tagName"
+            :tag-name="tagName"
+            class="mb-2 mr-2"
+          />
         </div>
       </ListItem>
     </header>
