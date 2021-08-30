@@ -7,7 +7,7 @@
   "scripts": {
     "serve": "vuepress dev example",
     "build": "vuepress build example",
-    "lint": "eslint --fix blog/.vuepress/theme --ext .js,.vue"
+    "lint": "eslint --fix . --ext .js,.vue"
   },
   "author": {
     "name": "lyh543",
