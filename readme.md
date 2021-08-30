@@ -2,7 +2,8 @@
 
 Material VuePress Blog Theme Powered By Vuetify.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1c1bdacd-89b2-4b60-a19d-58929dab5f16/deploy-status)](https://app.netlify.com/sites/vuepress-theme-blog-material/deploys)
+[国内 Demo](https://vuepress-theme-blog-material.lyh543.cn/) [![Deploy VuePress](https://github.com/lyh543/vuepress-theme-blog-material/actions/workflows/deploy.yml/badge.svg)](https://github.com/lyh543/vuepress-theme-blog-material/actions/workflows/deploy.yml)  
+[国外 Demo](https://vuepress-theme-blog-material.netlify.app/) [![Netlify Status](https://api.netlify.com/api/v1/badges/1c1bdacd-89b2-4b60-a19d-58929dab5f16/deploy-status)](https://app.netlify.com/sites/vuepress-theme-blog-material/deploys)
 
 ## 博文路径
 

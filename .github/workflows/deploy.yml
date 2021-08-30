@@ -1,0 +1,44 @@
+name: Deploy VuePress
+
+on: [push] # 当有新push时运行
+
+jobs:
+  build: # 一项叫做build的任务
+
+    runs-on: ubuntu-latest # 在最新版的Ubuntu系统下运行
+    
+    steps:
+    - name: Checkout # 将仓库内master分支的内容下载到工作目录
+      uses: actions/checkout@v1 # 脚本来自 https://github.com/actions/checkout
+      
+    - name: Use Node.js 16.x # 配置Node环境
+      uses: actions/setup-node@v1 # 配置脚本来自 https://github.com/actions/setup-node
+      with:
+        node-version: "16.x"
+  
+    - name: Generate Static Websites
+      env:
+        TZ: Asia/Shanghai
+      run: |
+        npm i
+        npm run build
+
+    - name: Setup SSH env
+      env:
+        ACTION_DEPLOY_KEY: ${{ secrets.ACTION_DEPLOY_KEY }}
+      run: |
+        # set up private key for deploy
+        mkdir -p ~/.ssh/
+        echo "$ACTION_DEPLOY_KEY" | tr -d '\r' > ~/.ssh/id_rsa # 配置秘钥
+        chmod 600 ~/.ssh/id_rsa
+        # ssh-keyscan github.com >> ~/.ssh/known_hosts
+        ssh-keyscan lyh543.cn >> ~/.ssh/known_hosts
+        # set git infomation
+        # git config --global user.name 'lyh543' # 换成你自己的邮箱和名字
+        # git config --global user.email 'lyh543@outlook.com'
+
+    - name: Deploy 🚀 To Server
+      run: |
+        rsync -av \
+          example/.vuepress/dist/* \
+          ubuntu@lyh543.cn:/etc/caddy/html/vuepress-theme-blog-material/
