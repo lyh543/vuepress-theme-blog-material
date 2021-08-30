@@ -72,7 +72,8 @@ module.exports = themeConfig => {
 
   const plugins = [
     ["@vuepress/plugin-blog", pluginBlogConfig],
-    'vuepress-plugin-table-of-contents',
+    ['vuepress-plugin-table-of-contents', [1, 4]],
+    'vuepress-plugin-public-files',
     ['@maginapp/vuepress-plugin-katex', {delimiters: 'dollars'}],
     ['@vuepress/plugin-medium-zoom', {selector: 'img'}],
     ["@vuepress/plugin-pwa", {serviceWorker: true, updatePopup: true, popupComponent: 'PwaSnackbar'}],

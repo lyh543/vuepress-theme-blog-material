@@ -23,7 +23,7 @@ module.exports = {
     // todo: line numbers
     lineNumbers: false,
     // fixme: includeLevel is still [2, 3]
-    toc: {includeLevel: [1, 2, 3, 4]}
+    toc: {includeLevel: [1, 4]}
   },
 
   /*
