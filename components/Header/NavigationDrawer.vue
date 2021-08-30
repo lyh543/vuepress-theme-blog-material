@@ -58,8 +58,7 @@
 
 
 <script>
-import {author, email} from '@config';
-import avatar_url from '@public/img/avatar.png';
+const avatar_url = '/img/avatar.png';
 
 export default {
   props: {
@@ -70,8 +69,8 @@ export default {
   },
   data() {
     return {
-      author,
-      email,
+      author: '',
+      email: '',
       avatar_url,
       items: [],
       clickTotal: 0,
@@ -89,6 +88,9 @@ export default {
 
   // create 后加载导航栏的选项
   created() {
+    this.author = this.$themeConfig.author;
+    this.email = this.$themeConfig.email;
+
     let items = this.$themeConfig.nav;
     items.forEach(element => {
       element.value = false;

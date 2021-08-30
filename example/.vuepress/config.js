@@ -1,13 +1,7 @@
-const path = require("path");
-
-const hostname = 'https://vuepress-theme-blog-material.netlify.app/';
-
 // https://vuepress.vuejs.org/config/
 module.exports = {
   title: 'vuepress-theme-blog-material',
   description: '正在开发中的 Material Design 风格 Vuepress',
-  author: 'lyh543',
-  email: 'lyh543@outlook.com',
   port: 4000,
   dest: 'dist',
   locales: {'/': {lang: 'zh-CN'}},
@@ -34,14 +28,16 @@ module.exports = {
 
   ],
 
-  theme: './theme',
+  theme: '..',
   /*
    * themeConfig can read in ./theme/index.js
    * and can be read as 'this.$themeConfig' in Vue Component
    */
   themeConfig: {
+    author: 'lyh543',
+    email: 'lyh543@outlook.com',
+    hostname: 'https://vuepress-theme-blog-material.netlify.app/',
     dateFormat: 'YYYY-MM-DD',
-    hostname: hostname,
 
     // nav 和 footer.contact 的图标默认来源：https://materialdesignicons.com/
     // footer.contact 也可以使用自己的图标（参考 bilibili 图标的格式）

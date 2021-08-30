@@ -105,9 +105,10 @@
 <script>
 // import PicturePlaceholder from "@/components/ui/Base/picture-placeholder";
 // import {getMyProfile} from "@/api/user";
-import SearchBox from "@SearchBox"
-import appbar_background_url from "@public/img/appbar_background.png";
+import SearchBox from "@SearchBox";
 import TagTab from "./extensions/TagTab";
+
+const appbar_background_url = "/img/appbar_background.png";
 
 export default {
   components: {
