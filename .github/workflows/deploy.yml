@@ -40,5 +40,5 @@ jobs:
     - name: Deploy 🚀 To Server
       run: |
         rsync -av \
-          example/.vuepress/dist/* \
+          dist/* \
           ubuntu@lyh543.cn:/etc/caddy/html/vuepress-theme-blog-material/
