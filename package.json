@@ -4,6 +4,12 @@
   "description": "Material VuePress Blog Theme Powered By Vuetify",
   "main": "index.js",
   "homepage": "https://github.com/lyh543/vuepress-theme-blog-material/",
+  "keywords": [
+    "vue",
+    "vuepress",
+    "vuetify",
+    "material design"
+  ],
   "scripts": {
     "serve": "vuepress dev example",
     "build": "vuepress build example",
@@ -11,8 +17,12 @@
   },
   "author": {
     "name": "lyh543",
-    "url": "https://lyh543.cn/",
+    "url": "https://github.com/lyh543",
     "email": "lyh543@outlook.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lyh543/vuepress-theme-blog-material"
   },
   "license": "MIT",
   "lint-staged": {
