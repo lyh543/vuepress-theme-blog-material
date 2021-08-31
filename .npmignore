@@ -1,0 +1,13 @@
+.DS_Store
+*.log
+
+# npm project
+node_modules/
+dist
+
+# vuepress develop
+.idea
+
+
+# example
+example
