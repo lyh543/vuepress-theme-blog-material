@@ -25,23 +25,18 @@
       </v-row>
     </v-container>
 
-    <component
-      :is="paginationComponent"
-      v-if="$pagination.length > 1 && paginationComponent"
-    />
+    <Pagination v-if="$pagination.length > 1" />
   </div>
 </template>
 
 <script>
-/* global THEME_BLOG_PAGINATION_COMPONENT */
-
 import Vue from 'vue'
-import {Pagination, SimplePagination} from '@vuepress/plugin-blog/lib/client/components'
+import {Pagination} from '@vuepress/plugin-blog/lib/client/components'
 import PostEntryCard from "../global-components/PostEntryCard";
 
 
 export default {
-  components: {PostEntryCard},
+  components: {PostEntryCard, Pagination},
 
   data() {
     return {
@@ -53,26 +48,6 @@ export default {
     pages() {
       return this.$pagination.pages
     },
-  },
-
-
-  created() {
-    this.paginationComponent = this.getPaginationComponent()
-  },
-
-  methods: {
-    getPaginationComponent() {
-      const n = THEME_BLOG_PAGINATION_COMPONENT
-      if (n === 'Pagination') {
-        return Pagination
-      }
-
-      if (n === 'SimplePagination') {
-        return SimplePagination
-      }
-
-      return Vue.component(n) || Pagination
-    },
-  },
+  }
 }
 </script>

@@ -12,6 +12,8 @@ module.exports = {
     parser: "babel-eslint" // Support dynamic import
   },
 
+  ignorePatterns: ["dist/"],
+
   rules: {
     "no-undef": ["error"],
     "vue/match-component-file-name": [
