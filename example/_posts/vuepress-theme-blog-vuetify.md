@@ -1,3 +1,9 @@
+title: VuePress Theme Blog Material
+date: 2021-09-02 16:17
+tags:
+- vuepress-theme-blog-vuetify
+---
+
 # vuepress-theme-blog-material
 
 [![](https://img.shields.io/npm/l/vuepress-theme-blog-material.svg)](https://github.com/lyh543/vuepress-theme-blog-material/blob/master/LICENSE) [![](https://img.shields.io/npm/v/vuepress-theme-blog-material.svg)](https://www.npmjs.com/package/vuepress-theme-blog-material) [![](https://img.shields.io/npm/dt/vuepress-theme-blog-material.svg)](https://www.npmjs.com/package/vuepress-theme-blog-material) [![](https://img.shields.io/github/last-commit/lyh543/vuepress-theme-blog-material.svg)](https://github.com/lyh543/vuepress-theme-blog-material/commits/master)
