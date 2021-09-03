@@ -124,13 +124,20 @@ module.exports = themeConfig => {
       // if (regularPath.startsWith('/_posts'))
       //   $page.regularPath = regularPath.substr(7);
 
+      // 匹配 "null"、"Page 1 | null"
+      const postListTitleReg = /^(Page \d+ \| )?null$/;
+
       /*
        * Generate title for posts if it exists in neither $page nor frontmatter
        */
       if ($page.title) {
         // do nothing
       } else if ($page.frontmatter.title) {
-        $page.title = $page.frontmatter.title;
+        if (postListTitleReg.test($page.frontmatter.title)) {
+          $page.frontmatter.title = null;
+        } else {
+          $page.title = $page.frontmatter.title;
+        }
       } else if (_filePath) {
         const guessTitle = getFirstMarkdownHeading(_strippedContent);
         const defaultTitle = getFileNameWithoutExtension(_filePath);

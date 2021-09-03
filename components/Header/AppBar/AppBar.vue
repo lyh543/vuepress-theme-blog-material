@@ -6,7 +6,7 @@
     dark
     color="primary"
     height="250px"
-    :src="appbarBackgroundUrl"
+    :src="backgroundUrl"
     shrink-on-scroll
     fade-img-on-scroll
   >
@@ -40,7 +40,7 @@
       <v-fade-transition hide-on-leave>
         <v-app-bar-title
           id="app-bar-title"
-          :style="appbarTitleStyle"
+          :style="titleStyle"
           v-text="$page.title || $siteTitle"
         />
       </v-fade-transition>
@@ -103,8 +103,6 @@
 
 
 <script>
-// import PicturePlaceholder from "@/components/ui/Base/picture-placeholder";
-// import {getMyProfile} from "@/api/user";
 import SearchBox from "@SearchBox";
 import TagTab from "./extensions/TagTab";
 
@@ -114,15 +112,14 @@ export default {
   components: {
     TagTab,
     SearchBox,
-    // PicturePlaceholder,
   },
 
   data() {
     return {
-      appbarBackgroundUrl: appbar_background_url,
+      backgroundUrl: appbar_background_url,
       showSearchBar: false,
       keyword: '',
-      appbarTitleSize: 20,
+      titleSize: 20,
     }
   },
 
@@ -130,18 +127,18 @@ export default {
     mobile() {
       return this.$vuetify.breakpoint.xs;
     },
-    appbarTitleStyle() {
-      return "font-size: " + this.appbarTitleSize + "px"
+    titleStyle() {
+      return "font-size: " + this.titleSize + "px"
     }
   },
 
   mounted() {
     // 监听 appbar 高度改变 appbar-title 大小
     // 这里选择 appbar.computedOpacity 作为监听对象（appbar 最小时为 0，最大时为 1）
-    this.appbarTitleSize = 20 + this.$refs.appbar.computedOpacity * 20;
+    this.titleSize = 20 + this.$refs.appbar.computedOpacity * 20;
     this.$watch(
       () => this.$refs.appbar.computedOpacity,
-      (val) => this.appbarTitleSize = 20 + val * 20
+      (val) => this.titleSize = 20 + val * 20
     );
   }
 };

@@ -73,7 +73,7 @@ module.exports = {
     directories: [
       {
         id: 'post',
-        title: null,  // if keep null, navbar will show this.$siteTitle
+        title: null,  // keep null, and navbar will show this.$siteTitle
         dirname: '_posts',
         layout: 'PostList',
         itemLayout: 'Post',
