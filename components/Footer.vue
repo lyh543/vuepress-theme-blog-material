@@ -1,6 +1,7 @@
 <!-- footer: 底栏 -->
 <template>
   <v-footer
+    id="footer"
     padless
     inset
     app
@@ -80,7 +81,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -93,6 +93,18 @@ export default {
     const {contact, copyright} = this.$themeConfig.footer;
     this.contact = contact;
     this.copyright = copyright;
+  },
+
+  mounted() {
+    // Listen on footer's height changes. When it changes, change main-content's padding-bottom.
+    const footer = document.getElementById('footer');
+    const mainContent = document.getElementById('main-content');
+    const resizeObserver = new ResizeObserver(entries => {
+      const footerHeight = entries[0].target.clientHeight;
+      mainContent.style['padding-bottom'] = footerHeight + 'px';
+      }
+    )
+    resizeObserver.observe(footer);
   }
 }
 </script>
