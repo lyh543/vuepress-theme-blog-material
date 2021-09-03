@@ -128,7 +128,7 @@ export default {
       return this.$vuetify.breakpoint.xs;
     },
     titleStyle() {
-      return "font-size: " + this.titleSize + "px"
+      return {fontSize: this.titleSize + "px"};
     }
   },
 

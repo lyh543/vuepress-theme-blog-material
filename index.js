@@ -75,10 +75,19 @@ module.exports = themeConfig => {
     ['vuepress-plugin-table-of-contents', [1, 4]],
     ['@maginapp/vuepress-plugin-katex', {delimiters: 'dollars'}],
     ['@vuepress/plugin-medium-zoom', {selector: 'img'}],
-    ["@vuepress/plugin-pwa", {serviceWorker: true, updatePopup: true, popupComponent: 'PwaSnackbar'}],
     ['@vuepress/plugin-search', {searchMaxSuggestions: 10}],
     ['@vuepress/plugin-last-updated', {transformer: timeTransformer}],
     ['vuepress-plugin-clean-urls', {normalSuffix: '/'}],
+    ["@vuepress/plugin-pwa", {
+      serviceWorker: true,
+      updatePopup: {
+        '/': {
+          message: "博客已更新！",
+          buttonText: "刷新"
+        }
+      },
+      popupComponent: 'PwaSnackbar'
+    }],
   ];
 
   // return Option API. see:

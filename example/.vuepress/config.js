@@ -25,7 +25,16 @@ module.exports = {
    * you can see which plugins are added by theme in 'theme/index.html'
    */
   plugins: [
-
+    ["@vuepress/plugin-pwa", {
+      serviceWorker: true,
+      updatePopup: {
+        '/': {
+          message: "博客已更新！",
+          buttonText: "刷新"
+        }
+      },
+      popupComponent: 'PwaSnackbar'
+    }],
   ],
 
   theme: '..',
