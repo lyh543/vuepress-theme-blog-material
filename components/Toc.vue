@@ -34,19 +34,19 @@ export default {
   },
 
   mounted() {
-    // for
     $("a").on('click', function(event) {
+      const hash = decodeURI(this.hash);
       // Make sure this.hash has a value before overriding default behavior
-      if (this.hash !== "") {
-        jumpToAnchor(this.hash);
+      if (hash !== "") {
+        jumpToAnchor(hash);
       }
     });
   },
 
   methods: {
-    clickToc(event) {
-      if (event.length > 0) {
-        jumpToAnchor(`#${event[0]}`);
+    clickToc(titles) {
+      if (titles.length > 0) {
+        jumpToAnchor(`#${titles[0]}`);
       }
     },
   }
