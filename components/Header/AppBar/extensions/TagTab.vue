@@ -2,6 +2,7 @@
   <v-tabs
     :value="currentIndex"
     align-with-title
+    center-active
   >
     <v-tabs-slider color="yellow" />
 
