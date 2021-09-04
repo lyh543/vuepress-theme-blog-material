@@ -9,17 +9,26 @@
           align-top
           dense
         >
+          <v-timeline-item
+            key="total"
+            icon="mdi-text"
+            fill-dot
+            :color="colors[0]"
+          >
+            <div class="py-2">
+              共 {{ posts.length }} 篇
+            </div>
+          </v-timeline-item>
           <template v-for="(node, index) in timelineNodes">
             <v-timeline-item
               v-if="node.isDate"
               :key="node.date"
               icon="mdi-calendar"
               fill-dot
-
-              :color="colors[index % colors.length]"
+              :color="colors[index+1 % colors.length]"
             >
               <div class="py-2">
-                <strong>{{ node.date }}</strong>
+                <strong>{{ node.date }}</strong> （{{ node.postsCount }} 篇）
               </div>
             </v-timeline-item>
 
@@ -30,7 +39,10 @@
               small
             >
               <v-row>
-                <v-col cols="2">
+                <v-col
+                  cols="3"
+                  sm="2"
+                >
                   {{ node.postDate.slice(5) }}
                 </v-col>
                 <v-col>
@@ -57,6 +69,7 @@ import {colors} from "../utils/constants";
 export default {
   data() {
     return {
+      posts: [],
       timelineNodes: [],
       colors,
     };
@@ -65,28 +78,37 @@ export default {
     this.timelineNodes = [];
     const dateFormat = this.$themeConfig.dateFormat;
     // calculate postTime and sort by postTime.
-    const posts = this.$site.pages
+    this.posts = this.$site.pages
       .filter(page => page.id === 'post')
       .map(post => {
         post.postDate = getPostDateOrLastUpdated(post, dateFormat);
         return post;
       })
       .sort((post1, post2) => (post1.postDate < post2.postDate ? 1 : -1));
+
     /*
      * Copy posts to timeline node
      * and insert a date node when the current post and the previous post are posted in different month
      */
-    for (let i = 0; i < posts.length; i++) {
-      if (i === 0 || posts[i].postDate.slice(0, 7) !== posts[i - 1].postDate.slice(0, 7)) {
+    let lastDateIndex = -1;
+    for (let i = 0; i < this.posts.length; i++) {
+      if (i === 0 || this.posts[i].postDate.slice(0, 7) !== this.posts[i - 1].postDate.slice(0, 7)) {
+        if (lastDateIndex !== -1) {
+          this.timelineNodes[lastDateIndex].postsCount = this.timelineNodes.length - lastDateIndex - 1;
+        }
+        lastDateIndex = this.timelineNodes.length;
         this.timelineNodes.push({
           isDate: true,
-          date: posts[i].postDate.slice(0, 7)
+          date: this.posts[i].postDate.slice(0, 7)
         });
       }
       this.timelineNodes.push({
-        ...posts[i],
+        ...this.posts[i],
         isDate: false
       });
+    }
+    if (lastDateIndex !== -1) {
+      this.timelineNodes[lastDateIndex].postsCount = this.timelineNodes.length - lastDateIndex - 1;
     }
   }
 }
