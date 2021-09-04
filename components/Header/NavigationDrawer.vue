@@ -57,7 +57,7 @@
 
 
 <script>
-const avatar_url = '/img/avatar.png';
+const avatar_url = '/theme/avatar.png';
 
 export default {
   props: {

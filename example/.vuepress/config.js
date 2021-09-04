@@ -7,7 +7,7 @@ module.exports = {
   locales: {'/': {lang: 'zh-CN'}},
   // todo: change default public folder
   head: [
-    ['link', {rel: 'icon', href: '/img/favicon.png'}]
+    ['link', {rel: 'icon', href: '/theme/favicon.png'}]
   ],
   // todo: add more patterns
   patterns: ['**/*.md', '**/*.vue'],
@@ -67,7 +67,7 @@ module.exports = {
         {icon: 'mdi-sina-weibo', href: 'https://weibo.com/'},
         {icon: 'mdi-wechat', href: 'https://weixin.qq.com/'},
         {icon: 'mdi-qqchat', href: 'https://qq.com/'},
-        {icon: '/img/bilibili.svg', iconDark: '/img/bilibili_dark.svg', href: 'https://bilibili.com/'},
+        {icon: '/theme/bilibili.svg', iconDark: '/theme/bilibili_dark.svg', href: 'https://bilibili.com/'},
       ],
       copyright: [
         {text: 'lyh543 © 2019 - 2021'},
@@ -154,7 +154,7 @@ module.exports = {
           test: /\.(webp)$/i,
           loader: 'url-loader',
           options: {
-            outputPath: 'assets/img/',
+            outputPath: 'assets/theme/',
           },
         },
         {

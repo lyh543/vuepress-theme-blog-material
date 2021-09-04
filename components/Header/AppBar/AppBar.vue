@@ -6,7 +6,7 @@
     dark
     color="primary"
     height="250px"
-    :src="backgroundUrl"
+    :src="imageUrl"
     shrink-on-scroll
     fade-img-on-scroll
   >
@@ -106,7 +106,7 @@
 import SearchBox from "@SearchBox";
 import TagTab from "./extensions/TagTab";
 
-const appbar_background_url = "/img/appbar_background.png";
+const appbar_background_url = "/theme/appbar_background.png";
 
 export default {
   components: {
@@ -116,7 +116,6 @@ export default {
 
   data() {
     return {
-      backgroundUrl: appbar_background_url,
       showSearchBar: false,
       keyword: '',
       titleSize: 20,
@@ -124,6 +123,10 @@ export default {
   },
 
   computed: {
+    imageUrl() {
+      const image = this.$page.frontmatter.image;
+      return image ? image : appbar_background_url;
+    },
     mobile() {
       return this.$vuetify.breakpoint.xs;
     },

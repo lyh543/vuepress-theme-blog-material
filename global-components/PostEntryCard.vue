@@ -18,7 +18,7 @@
       <v-card ripple>
         <v-img
           height="240"
-          :src="postImage"
+          :src="imageUrl"
         >
           <template #placeholder>
             <PicturePlaceholderAlt />
@@ -81,8 +81,10 @@ export default {
   },
 
   computed: {
-    postImage() {
-      return generatePostImage(this.page)
+    imageUrl() {
+      const image = this.page.frontmatter.image;
+      const defaultImage = generatePostImage(this.page);
+      return image ? image : defaultImage;
     },
     postDate() {
       return getPostDateOrLastUpdated(this.page, this.$themeConfig.dateFormat);

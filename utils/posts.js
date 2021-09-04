@@ -17,7 +17,7 @@ export function parsePostKeyToInt(key) {
  */
 export function generatePostImage(page) {
   const imageLength = 19;
-  const imageLink = '/img/random/material-#.png';
+  const imageLink = '/theme/random/material-#.png';
 
   const index = parsePostKeyToInt(page.key) % imageLength + 1;
   return imageLink.replace('#', String(index));

@@ -6,7 +6,7 @@ Material VuePress Blog Theme Powered By Vuetify.
 
 ## 在线 Demo
 
-* [国内 Demo](https://vuepress-theme-blog-material.lyh543.cn/) [![Deploy VuePress Example](https://github.com/lyh543/vuepress-theme-blog-material/actions/workflows/deploy-template.yml/badge.svg)](https://github.com/lyh543/vuepress-theme-blog-material/actions/workflows/deploy-template.yml)  
+* [国内 Demo](https://vuepress-theme-blog-material.lyh543.cn/) [![Deploy VuePress Example](https://github.com/lyh543/vuepress-theme-blog-material/actions/workflows/deploy-template.yml/badge.svg)](https://github.com/lyh543/vuepress-theme-blog-material/actions/workflows/deploy-template.yml)
 * [国外 Demo](https://vuepress-theme-blog-material.netlify.app/) [![Netlify Status](https://api.netlify.com/api/v1/badges/1c1bdacd-89b2-4b60-a19d-58929dab5f16/deploy-status)](https://app.netlify.com/sites/vuepress-theme-blog-material/deploys)
 
 ## 如何使用？
@@ -43,7 +43,7 @@ npm run build
 
 ### 博文路径
 
-个人比较喜欢按文件夹对博客进行分类，URL 呈现博文的路径。如果喜欢使用日期作为 URL，可以进行配置。
+本人比较喜欢按文件夹对博客进行分类，URL 呈现博文的路径。如果喜欢使用日期作为 URL，可以进行配置。
 
 ### 使用 Git 做版本管理
 
@@ -51,9 +51,16 @@ npm run build
 
 ### 图片和文件
 
-图片推荐使用相对路径，这样会交给 webpack 打包，打包后的图片的路径会发生变化，但相对路径会被正确地指向图片。
+Markdown 中的图片和文件可以通过相对路径（形如 `./pic.jpg`）或绝对路径（形如 `/img/pic.jpg`）的形式插入。VuePress 对二者的处理方式不同：
 
-图片也可以使用绝对路径，webpack 不会修改图片路径。因为这个原因，其他文件也最好使用绝对路径。使用绝对路径时，请将图片和其他文件复制到 `/blog/.vuepress/public` 文件夹。该文件夹下的文件会被复制到博客根目录下。
+* 对于绝对路径（以及外链），VuePress 会直接将链接复制到生成的 HTML 中。VuePress 只会将出现在 `/blog/.vuepress/public` 的文件复制到生成的根目录（如 `/img.pic` 的图片应当放在 `/blog/.vuepress/public/img.pic` 中）。
+* 对于相对路径的图片，VuePress 会将相对链接引用的图片交给 webpack 处理。在编译阶段，webpack 会寻找到图片（如果图片不存在会在编译阶段报错），然后将其复制到生成文件夹，同时修改链接为新的 URL。
+
+VuePress 建议对图片使用相对路径，对文件使用绝对路径。但我个人推荐都使用绝对路径，因为 webpack 只会识别 `<img>`、`![]()` 而忽略其它格式（如普通链接）的图片链接；如果同时使用相对路径和绝对路径引用一个图片也会导致出错。
+
+-------------
+
+每篇博客的头图会从[19 张 Material 风格照片](https://github.com/lyh543/vuepress-theme-blog-material/tree/template/blog/.vuepress/public/theme/random)中随机选择一张。你也可以在 frontmatter 中添加 `image` 字段（仅支持[绝对路径](https://github.com/lyh543/vuepress-theme-blog-material/blob/template/blog/_posts/markdown/markdown-demo.md)和[链接](https://github.com/lyh543/vuepress-theme-blog-material/blob/template/blog/_posts/markdown/markdown-demo-2.md)）替换。
 
 ### 代码块染色
 

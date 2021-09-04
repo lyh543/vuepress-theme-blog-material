@@ -1,6 +1,7 @@
 ---
 tags:
 - markdown
+image: /theme/appbar_background.png
 ---
 <!-- this file is to test whether vuepress can choose appropriate title for markdown -->
 
