@@ -48,7 +48,7 @@ function timeTransformer(timestamp) {
 module.exports = themeConfig => {
   const {hostname} = themeConfig;
   // default config of @vuepress/theme-plugin-blog
-  // https://vuepress-plugin-blog.ulivz.com/config/
+  // https://vuepress-plugin-blog.billyyyyy3320.com/config/
   const defaultBlogPluginOptions = {
     sitemap: {hostname},
     feed: {canonical_base: hostname},

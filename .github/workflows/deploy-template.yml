@@ -46,4 +46,4 @@ jobs:
       run: |
         rsync -av \
           dist/* \
-          ubuntu@lyh543.cn:/etc/caddy/html/vuepress-theme-blog-material/
+          lyh543@lyh543.cn:/etc/caddy/html/vuepress-theme-blog-material/

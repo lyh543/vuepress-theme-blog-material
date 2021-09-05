@@ -17,11 +17,10 @@
                   itemprop="articleBody"
                   class="markdown-body"
                 />
+                <v-divider class="ma-4" />
+                <Comment />
               </v-container>
             </v-card>
-            <footer>
-              <Comment />
-            </footer>
           </article>
         </v-col>
 

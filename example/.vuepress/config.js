@@ -77,7 +77,7 @@ module.exports = {
 
     /****** The following themeConfig will be copied to config of @vuepress/plugin-blog ******/
 
-    // Ref: https://vuepress-plugin-blog.ulivz.com/config/#directories
+    // Ref: https://vuepress-plugin-blog.billyyyyy3320.com/config/#directories
     directories: [
       {
         id: 'post',
@@ -93,7 +93,7 @@ module.exports = {
       },
     ],
 
-    // Ref: https://vuepress-plugin-blog.ulivz.com/config/#frontmatters
+    // Ref: https://vuepress-plugin-blog.billyyyyy3320.com/config/#frontmatters
     frontmatters: [
       {
         id: "tags",
@@ -105,19 +105,19 @@ module.exports = {
       },
     ],
 
-    // Ref: https://vuepress-plugin-blog.ulivz.com/config/#globalpagination
+    // Ref: https://vuepress-plugin-blog.billyyyyy3320.com/config/#globalpagination
     globalPagination: {
       lengthPerPage: 10,
     },
 
-    // Ref: https://vuepress-plugin-blog.ulivz.com/config/#comment
-    // comment: {
-    //   service: 'vssue',
-    //   owner: 'lyh543',
-    //   repo: 'lyh543.github.io',
-    //   clientId: 'xxxxxxxxxxxxxxxxxxxx',
-    //   clientSecret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-    // },
+    // Ref: https://vuepress-plugin-blog.billyyyyy3320.com/config/#comment
+    comment: {
+      service: 'vssue',
+      owner: 'lyh543',
+      repo: 'lyh543.github.io',
+      clientId: 'xxxxxxxxxxxxxxxxxxxx',
+      clientSecret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    },
 
     /****** The themeConfig above will be copied to config of @vuepress/plugin-blog ******/
   },
