@@ -25,7 +25,7 @@
               :key="node.date"
               icon="mdi-calendar"
               fill-dot
-              :color="colors[index+1 % colors.length]"
+              :color="colors[(index+1) % colors.length]"
             >
               <div class="py-2">
                 <strong>{{ node.date }}</strong> （{{ node.postsCount }} 篇）
@@ -35,7 +35,7 @@
             <v-timeline-item
               v-else
               :key="node.key"
-              :color="colors[index % colors.length]"
+              :color="colors[(index+1) % colors.length]"
               small
             >
               <v-row>
