@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-blog-material",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Material VuePress Blog Theme Powered By Vuetify",
   "main": "index.js",
   "homepage": "https://github.com/lyh543/vuepress-theme-blog-material/",
