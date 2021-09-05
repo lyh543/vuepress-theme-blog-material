@@ -14,7 +14,7 @@
     "serve": "vuepress dev example",
     "build": "vuepress build example",
     "lint": "eslint --fix . --ext .js,.vue",
-    "postversion": "git push && git push --tags"
+    "postversion": "npm publish --registry https://registry.npmjs.org && git push --follow-tags"
   },
   "author": {
     "name": "lyh543",
