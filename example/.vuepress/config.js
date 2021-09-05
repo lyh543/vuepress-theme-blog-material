@@ -5,7 +5,6 @@ module.exports = {
   port: 4000,
   dest: 'dist',
   locales: {'/': {lang: 'zh-CN'}},
-  // todo: change default public folder
   head: [
     ['link', {rel: 'icon', href: '/theme/favicon.png'}]
   ],
@@ -130,52 +129,8 @@ module.exports = {
   evergreen: true,
 
   extendPageData($page) {
-    const {
-      _filePath,           // file's absolute path
-      _computed,           // access the client global computed mixins at build time, e.g _computed.$localePath.
-      _content,            // file's raw content string
-      _strippedContent,    // file's content string without frontmatter
-      key,                 // page's unique hash key
-      frontmatter,         // page's frontmatter object
-      regularPath,         // current page's default link (follow the file hierarchy)
-      path,                // current page's real link (use regularPath when permalink does not exist)
-    } = $page
-
     // 去除链接中的 _posts
-    if (regularPath.startsWith('/_posts'))
-      $page.regularPath = regularPath.substr('/_posts'.length);
+    if ($page.regularPath.startsWith('/_posts'))
+      $page.regularPath = $page.regularPath.substr('/_posts'.length);
   },
-
-  configureWebpack: {
-    module: {
-      rules: [
-        {
-          // 处理 webp 图片
-          test: /\.(webp)$/i,
-          loader: 'url-loader',
-          options: {
-            outputPath: 'assets/theme/',
-          },
-        },
-        {
-          // 处理代码
-          test: /\.(cpp|java|py|sql|json|xml)$/i,
-          loader: 'url-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'assets/code/',
-          },
-        },
-        {
-          // 处理 xlsx
-          test: /\.xlsx$/i,
-          loader: 'url-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'assets/blob/',
-          },
-        },
-      ],
-    },
-  }
 }

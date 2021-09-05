@@ -1,12 +1,12 @@
 ---
-title: Markdown Demo 2
+title: Markdown 效果演示
 date: 2021-7-7 21:23:36
 tags:
 - markdown
-image: https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png
+image: https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg
 ---
 
-## 标题是 h2
+## h2
 
 ### h3
 
@@ -24,9 +24,9 @@ image: https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png
 
 ## 链接
 
-[相对路径链接](../../images/vczh.png)
+[相对路径链接](../../images/vczh.png)不能正确地指向图片，所以推荐绝对路径
 
-[绝对路径链接](/mirrors/docker.json)
+[绝对路径链接](/theme/favicon.png)
 
 [绝对路径链接 2](/mirrors/maven.xml)
 
