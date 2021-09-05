@@ -20,7 +20,7 @@ image: https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png
 
 ![相对路径图片](../../images/vczh.png)
 
-![绝对路径图片](/img/favicon.png)
+![绝对路径图片](/theme/favicon.png)
 
 ## 链接
 

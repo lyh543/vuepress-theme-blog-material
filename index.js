@@ -137,6 +137,12 @@ module.exports = themeConfig => {
       const postListTitleReg = /^(Page \d+ \| )?null$/;
 
       /*
+       * Set /about to Post
+       */
+      if (path === '/about.html')
+        $page.frontmatter.layout = 'Post';
+
+      /*
        * Generate title for posts if it exists in neither $page nor frontmatter
        */
       if ($page.title) {
