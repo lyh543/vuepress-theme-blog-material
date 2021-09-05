@@ -29,7 +29,7 @@
           v-if="!xs"
           cols="3"
         >
-          <v-card style="position: fixed">
+          <v-card style="position: fixed; max-width: 15%">
             <PostInfo />
           </v-card>
         </v-col>
