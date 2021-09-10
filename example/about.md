@@ -62,6 +62,30 @@ VuePress 建议对图片使用相对路径，对文件使用绝对路径。但�
 
 每篇博客的头图会从[19 张 Material 风格照片](https://github.com/lyh543/vuepress-theme-blog-material/tree/template/blog/.vuepress/public/theme/random)中随机选择一张。你也可以在 frontmatter 中添加 `image` 字段（仅支持[绝对路径](https://github.com/lyh543/vuepress-theme-blog-material/blob/template/blog/_posts/markdown/markdown-demo.md)和[链接](https://github.com/lyh543/vuepress-theme-blog-material/blob/template/blog/_posts/markdown/markdown-demo-2.md)）替换。
 
+```markdown
+---
+title: Markdown 效果演示
+date: 2021-7-7 21:23:36
+tags:
+- markdown 
+image: https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg
+---
+```
+
+------------------
+
+如果你恰巧也是使用 VS Code 编写 Markdown，你可以使用 [Markdown Image](https://marketplace.visualstudio.com/items?itemName=hancel.markdown-image) 插件来向 Markdown 插入图片，该插件会自动将剪贴板中的图片复制到对应文件夹，然后修改链接使得该主题能够直接加载。
+
+相关配置为：
+
+```json
+{
+  "markdown-image.base.uploadMethod": "Local",
+  "markdown-image.local.path": "/blog/.vuepress/public/images/",
+  "markdown-image.local.referencePath": "/images/"
+}
+```
+
 ### 代码块染色
 
 使用 Prism 进行代码块染色。支持的语言列表请见 [Prism](https://prismjs.com/#languages-list)。
