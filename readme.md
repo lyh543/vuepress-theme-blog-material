@@ -39,6 +39,24 @@ npm run serve
 npm run build
 ```
 
+## 如何开发？
+
+本主题的文件和测试博客的文件分别在 master 和 template 分支中。开发博客主题时，推荐将主题文件和博文分别 clone 到两个文件夹，然后使用 `npm link` 进行链接：
+
+```shell
+git clone https://github.com/lyh543/vuepress-theme-blog-material.git vuepress-theme-blog-material
+cd vuepress-theme-blog-material
+npm i
+sudo npm link
+
+cd ..
+git clone https://github.com/lyh543/vuepress-theme-blog-material.git vuepress-theme-blog-material-template
+cd vuepress-theme-blog-material-template
+npm link vuepress-theme-blog-material
+npm i
+npm run serve
+```
+
 ## 博客编写
 
 ### 博文路径
