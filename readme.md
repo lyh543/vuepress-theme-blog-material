@@ -13,7 +13,7 @@ Material VuePress Blog Theme Powered By Vuetify.
 
 [master](https://github.com/lyh543/vuepress-theme-blog-material/tree/master) 分支提供了主题的源代码，而 [template](https://github.com/lyh543/vuepress-theme-blog-material/tree/template) 分支提供了使用本主题搭建的示例博客。
 
-如需使用本主题，请 clone template 分支，然后进行修改。
+如需使用本主题，请 clone template 分支，然后修改为自己的博客。
 
 ### 下载
 
@@ -37,24 +37,6 @@ npm run serve
 
 ```shell
 npm run build
-```
-
-## 如何开发？
-
-本主题的文件和测试博客的文件分别在 master 和 template 分支中。开发博客主题时，推荐将主题文件和博文分别 clone 到两个文件夹，然后使用 `npm link` 进行链接：
-
-```shell
-git clone https://github.com/lyh543/vuepress-theme-blog-material.git vuepress-theme-blog-material
-cd vuepress-theme-blog-material
-npm i
-sudo npm link
-
-cd ..
-git clone https://github.com/lyh543/vuepress-theme-blog-material.git vuepress-theme-blog-material-template
-cd vuepress-theme-blog-material-template
-npm link vuepress-theme-blog-material
-npm i
-npm run serve
 ```
 
 ## 博客编写
@@ -121,6 +103,24 @@ $$\left\{\begin{aligned}
 I_0 &= 1 - e^{-1} \\
 I_n &= 1-nI_{n-1} \quad (n=1,2,...)
 \end{aligned} \right.$$
+```
+
+## 如何开发？
+
+本主题的文件和测试博客的文件分别在 master 和 template 分支中。开发博客主题时，推荐将主题文件和博文分别 clone 到两个文件夹，然后使用 `npm link` 进行链接：
+
+```shell
+git clone https://github.com/lyh543/vuepress-theme-blog-material.git vuepress-theme-blog-material
+cp -r vuepress-theme-blog-material vuepress-theme-blog-material-template
+cd vuepress-theme-blog-material
+npm i
+sudo npm link
+
+cd ../vuepress-theme-blog-material-template
+git checkout template
+npm i
+npm link vuepress-theme-blog-material
+npm run serve
 ```
 
 ## 已知问题

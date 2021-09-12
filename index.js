@@ -2,6 +2,7 @@ const removeMd = require("remove-markdown");
 const path = require("path");
 const moment = require('moment');
 
+
 /**
  * get file name without extension
  * @param filePath {String}
@@ -41,19 +42,25 @@ function pick(o, props) {
 }
 
 
+/**
+ * Transform timestamp to YYYY-MM-DD HH:mm:ss
+ * @param timestamp
+ * @returns {string} 'YYYY-MM-DD HH:mm:ss'
+ */
 function timeTransformer(timestamp) {
   return moment(timestamp).format('YYYY-MM-DD HH:mm:ss');
 }
 
+
 module.exports = themeConfig => {
-  const {hostname} = themeConfig;
-  // default config of @vuepress/theme-plugin-blog
+  const {hostname, themeAdditionalPages} = themeConfig;
+
+  // config of @vuepress/theme-plugin-blog
   // https://vuepress-plugin-blog.billyyyyy3320.com/config/
   const defaultBlogPluginOptions = {
     sitemap: {hostname},
     feed: {canonical_base: hostname},
   };
-
   // move config from themeConfig to @vuepress/theme-plugin-blog
   const themeConfigPluginProperties = [
     "directories",
@@ -62,32 +69,29 @@ module.exports = themeConfig => {
     "comment",
     "newsletter",
   ];
+  const themeBlogPluginOptions = pick(themeConfig, themeConfigPluginProperties);
+  const blogPluginOptions = {...themeBlogPluginOptions, ...defaultBlogPluginOptions};
 
-  // set config of @vuepress/theme-plugin-blog
-  const pluginBlogConfig = Object.assign(
-    {},
-    pick(themeConfig, themeConfigPluginProperties),
-    defaultBlogPluginOptions
-  );
-
+  const pwaPluginOptions = {
+    serviceWorker: true,
+    updatePopup: {
+      '/': {
+        message: "博客已更新！",
+        buttonText: "刷新"
+      }
+    },
+    popupComponent: 'PwaSnackbar'
+  }
   const plugins = [
-    ["@vuepress/plugin-blog", pluginBlogConfig],
-    ['vuepress-plugin-table-of-contents', [1, 4]],
+    ["@vuepress/plugin-blog", blogPluginOptions],
     ['@maginapp/vuepress-plugin-katex', {delimiters: 'dollars'}],
-    ['@vuepress/plugin-medium-zoom', {selector: 'img'}],
-    ['@vuepress/plugin-search', {searchMaxSuggestions: 10}],
+    ['@vuepress/plugin-html-redirect', {countdown: 0}],
     ['@vuepress/plugin-last-updated', {transformer: timeTransformer}],
+    ['@vuepress/plugin-medium-zoom', {selector: 'img'}],
+    ["@vuepress/plugin-pwa", pwaPluginOptions],
+    ['@vuepress/plugin-search', {searchMaxSuggestions: 10}],
     ['vuepress-plugin-clean-urls', {normalSuffix: '/'}],
-    ["@vuepress/plugin-pwa", {
-      serviceWorker: true,
-      updatePopup: {
-        '/': {
-          message: "博客已更新！",
-          buttonText: "刷新"
-        }
-      },
-      popupComponent: 'PwaSnackbar'
-    }],
+    ['vuepress-plugin-table-of-contents', [1, 4]],
   ];
 
   // return Option API. see:
