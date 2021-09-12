@@ -81,11 +81,10 @@ module.exports = themeConfig => {
       }
     },
     popupComponent: 'PwaSnackbar'
-  }
+  };
   const plugins = [
     ["@vuepress/plugin-blog", blogPluginOptions],
     ['@maginapp/vuepress-plugin-katex', {delimiters: 'dollars'}],
-    ['@vuepress/plugin-html-redirect', {countdown: 0}],
     ['@vuepress/plugin-last-updated', {transformer: timeTransformer}],
     ['@vuepress/plugin-medium-zoom', {selector: 'img'}],
     ["@vuepress/plugin-pwa", pwaPluginOptions],
