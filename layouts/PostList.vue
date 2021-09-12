@@ -25,18 +25,17 @@
       </v-row>
     </v-container>
 
-    <Pagination v-if="$pagination.length > 1" />
+    <VuetifyPagination v-if="$pagination.length > 1" />
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import {Pagination} from '@vuepress/plugin-blog/lib/client/components'
 import PostEntryCard from "../global-components/PostEntryCard";
+import VuetifyPagination from "../global-components/VuetifyPagination";
 
 
 export default {
-  components: {PostEntryCard, Pagination},
+  components: {PostEntryCard, VuetifyPagination},
 
   data() {
     return {
