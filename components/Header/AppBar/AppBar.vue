@@ -12,11 +12,11 @@
   >
     <v-app-bar-nav-icon @click="$emit('toggleNavigation')" />
 
-    <template v-if="showSearchBar">
+    <template v-if="showSearchBox">
       <v-fade-transition hide-on-leave>
         <v-btn
           icon
-          @click="showSearchBar=false; keyword=''"
+          @click="showSearchBox=false; keyword=''"
         >
           <v-icon>
             mdi-arrow-left
@@ -25,14 +25,7 @@
       </v-fade-transition>
 
       <v-fade-transition hide-on-leave>
-        <!--        <v-text-field-->
-        <!--          v-model="keyword"-->
-        <!--          hide-details-->
-        <!--          prepend-icon="mdi-magnify"-->
-        <!--          single-line-->
-        <!--          @input="searchCallback"-->
-        <!--        />-->
-        <SearchBox />
+        <VuetifySearchBox />
       </v-fade-transition>
     </template>
 
@@ -50,32 +43,12 @@
       <v-fade-transition hide-on-leave>
         <v-btn
           icon
-          @click="showSearchBar=true"
+          @click="showSearchBox=true"
         >
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
       </v-fade-transition>
     </template>
-
-    <!--    <template v-if="isAuthenticated">-->
-    <!--      <v-avatar-->
-    <!--        size="36"-->
-    <!--        contain-->
-    <!--      >-->
-    <!--        <v-img :src="profile.avatar_url">-->
-    <!--          <template #placeholder>-->
-    <!--            <PicturePlaceholder size="36" />-->
-    <!--          </template>-->
-    <!--        </v-img>-->
-    <!--      </v-avatar>-->
-
-    <!--      &lt;!&ndash;  移动端太挤了放不下  &ndash;&gt;-->
-    <!--      <template v-if="!mobile">-->
-    <!--        <span class="ml-2">-->
-    <!--          {{ profile.first_name }}-->
-    <!--        </span>-->
-    <!--      </template>-->
-    <!--    </template>-->
 
     <v-btn
       icon
@@ -90,33 +63,25 @@
     >
       <TagTab />
     </template>
-
-    <!--    <v-progress-linear-->
-    <!--      :active="$store.state.appbarLoading"-->
-    <!--      indeterminate-->
-    <!--      absolute-->
-    <!--      bottom-->
-    <!--      color="yellow accent-4"-->
-    <!--    />-->
   </v-app-bar>
 </template>
 
 
 <script>
-import SearchBox from "@SearchBox";
-import TagTab from "./extensions/TagTab";
+import VuetifySearchBox from "./VuetifySearchBox";
+import TagTab from "./TagTab";
 
 const appbar_background_url = "/theme/appbar_background.png";
 
 export default {
   components: {
     TagTab,
-    SearchBox,
+    VuetifySearchBox,
   },
 
   data() {
     return {
-      showSearchBar: false,
+      showSearchBox: false,
       keyword: '',
       titleSize: 20,
     }

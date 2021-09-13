@@ -2,8 +2,8 @@ name: Deploy VuePress Example
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - '*'
 
 jobs:
   build: # 一项叫做build的任务
