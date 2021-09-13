@@ -62,14 +62,26 @@ module.exports = themeConfig => {
     feed: {canonical_base: hostname},
   };
   // move config from themeConfig to @vuepress/theme-plugin-blog
-  const themeConfigPluginProperties = [
+  const properties = [
     "directories",
     "frontmatters",
     "globalPagination",
     "comment",
     "newsletter",
   ];
-  const themeBlogPluginOptions = pick(themeConfig, themeConfigPluginProperties);
+  const themeBlogPluginOptions = pick(themeConfig, properties);
+  // 使用和展示日期相同的算法（getLastUpdatedDate）计算时间并以此排序
+  if (!themeBlogPluginOptions.globalPagination.sorter) {
+    themeBlogPluginOptions.globalPagination.sorter = function(prev, next) {
+      function getPostTimeStamp(post) {
+        const date = post.frontmatter.date ? post.frontmatter.date : post.lastUpdated;
+        return new Date(date).getTime();
+      }
+      const prevTime = getPostTimeStamp(prev);
+      const nextTime = getPostTimeStamp(next);
+      return prevTime - nextTime > 0 ? -1 : 1;
+    }
+  }
   const blogPluginOptions = {...themeBlogPluginOptions, ...defaultBlogPluginOptions};
 
   const pwaPluginOptions = {
