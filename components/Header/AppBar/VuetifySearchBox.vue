@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="searchbox">
     <v-text-field
       ref="input"
       v-model="query"
@@ -13,9 +13,10 @@
       @click:clear="query=''"
     />
 
-    <v-menu-transition hide-on-leave>
+    <v-fade-transition>
       <v-sheet
         v-if="showSuggestions"
+        elevation="8"
         light
         rounded
       >
@@ -25,7 +26,7 @@
           link
           dense
           :to="post.path"
-          @click="query=''"
+          @click="$emit('close:searchbox')"
         >
           <v-list-item-title>
             <div class="d-inline-block">
@@ -40,7 +41,7 @@
           </v-list-item-title>
         </v-list-item>
       </v-sheet>
-    </v-menu-transition>
+    </v-fade-transition>
   </div>
 </template>
 
@@ -88,7 +89,7 @@ export default {
 
         // filter out results that do not match searchable paths
         if (!this.isSearchable(p)) {
-          continue
+          continue;
         }
 
         if (matchQuery(query, p)) {
@@ -111,11 +112,16 @@ export default {
   },
 
   mounted() {
-    document.addEventListener('keydown', this.onHotkey)
+    // fix searchbox width when it's initialized
+    const element = document.getElementById('searchbox');
+    const clientWidth = element.clientWidth;
+    element.style.width = clientWidth + 'px';
+
+    document.addEventListener('keydown', this.onHotkey);
   },
 
   beforeDestroy() {
-    document.removeEventListener('keydown', this.onHotkey)
+    document.removeEventListener('keydown', this.onHotkey);
   },
 
   methods: {
@@ -148,22 +154,7 @@ export default {
         this.$refs.input.focus()
         event.preventDefault()
       }
-    },
-
-    go(i) {
-      if (!this.showSuggestions) {
-        return
-      }
-      this.$router.push(this.suggestions[i].path)
-      this.query = ''
-    },
-
+    }
   }
 }
 </script>
-
-<style lang="css">
-.v-application .primary--text {
-  color: #ffffff !important;
-}
-</style>

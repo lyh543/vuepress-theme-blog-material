@@ -3,8 +3,8 @@
   <div>
     <NavigationDrawer :toggle-event="toggleNavigation" />
     <AppBar
-      @toggleNavigation="toggleNavigation=!toggleNavigation"
-      @toggleSettings="toggleSettings=!toggleSettings"
+      @toggle:navigation="toggleNavigation=!toggleNavigation"
+      @toggle:settings="toggleSettings=!toggleSettings"
     />
     <SettingsDrawer :toggle-event="toggleSettings" />
   </div>
