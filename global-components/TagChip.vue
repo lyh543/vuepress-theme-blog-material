@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import '../utils';
+import '../utils/hash';
 import {colors} from "../utils/constants";
 
 

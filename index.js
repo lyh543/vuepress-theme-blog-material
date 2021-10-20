@@ -1,59 +1,9 @@
 const removeMd = require("remove-markdown");
 const path = require("path");
-const moment = require('moment');
-
-
-/**
- * get file name without extension
- * @param filePath {String}
- * @returns {String}
- */
-function getFileNameWithoutExtension(filePath) {
-  return filePath
-    .match(/[^\/\\]+$/i)[0]  // get string after last /
-    .match(/^[^.]+/i)[0];    // get string before first .
-}
-
-
-/**
- * guess headings from Markdown content
- * @param content {String} Markdown content
- * @returns {String | null} title,
- */
-function getFirstMarkdownHeading(content) {
-  if (!content)
-    return null;
-  const headings = content.match(/# .+/);
-  if (headings && headings.length > 0)
-    return headings[0].replace(/# +/, "");
-  else
-    return null;
-}
-
-
-/**
- * an alternative of lodash/pick
- * @param o {Object} origin of props
- * @param props {Array<String>} names of props be picked
- * @return {Object} a new object consisting of picked props from origin
- */
-function pick(o, props) {
-  return Object.assign({}, ...props.map(prop => ({[prop]: o[prop]})));
-}
-
-
-/**
- * Transform timestamp to YYYY-MM-DD HH:mm:ss
- * @param timestamp
- * @returns {string} 'YYYY-MM-DD HH:mm:ss'
- */
-function timeTransformer(timestamp) {
-  return moment(timestamp).format('YYYY-MM-DD HH:mm:ss');
-}
-
+const {pick, timeTransformer, getFirstMarkdownHeading, getFileNameWithoutExtension} = require("./utils/themeConfig");
 
 module.exports = themeConfig => {
-  const {hostname, themeAdditionalPages} = themeConfig;
+  const {hostname} = themeConfig;
 
   // config of @vuepress/theme-plugin-blog
   // https://vuepress-plugin-blog.billyyyyy3320.com/config/

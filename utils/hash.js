@@ -12,13 +12,3 @@ String.prototype.hashCode = function() {
   }
   return hash;
 };
-
-/**
- * alternative of lodash/pick
- * @param o {Object}
- * @param props {Array<String>}
- * @returns {Object}
- */
-export function pick(o, props) {
-  return Object.assign({}, ...props.map(prop => ({[prop]: o[prop]})));
-}
