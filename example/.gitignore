@@ -8,5 +8,5 @@ dist
 # vuepress develop
 .idea
 
-
 package-lock.json
+yarn.lock

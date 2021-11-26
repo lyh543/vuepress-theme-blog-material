@@ -1,28 +1,20 @@
 name: Deploy Example & Release Template
-
 on:
   push:
-    tags:
-      - 'v*.*.*'
 
 env:
   TZ: Asia/Shanghai
-
 jobs:
   deploy-demo:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-
     - uses: actions/setup-node@v1
       with:
         node-version: "16.x"
         cache: 'yarn'
-
     - name: Generate Static Websites
-      run: yarn && yarn build
-
+      run: yarn && yarn build:example
     - name: Setup SSH env
       env:
         ACTION_DEPLOY_KEY: ${{ secrets.ACTION_DEPLOY_KEY }}
@@ -36,7 +28,6 @@ jobs:
         # set git infomation
         # git config --global user.name 'lyh543' # 换成你自己的邮箱和名字
         # git config --global user.email 'lyh543@outlook.com'
-
     - name: Deploy 🚀 To Server
       run: |
         rsync -av \
@@ -45,26 +36,16 @@ jobs:
 
 
   upload-template:
+    needs: [deploy-demo]
+    if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "16.x"
-          cache: 'yarn'
-
-      # To test whether it can pass the build
-      - name: Generate Static Websites
-        run: yarn && yarn build
-
       - name: Pack Template
         run: |
-          sed -e "s\$require.resolve('../../..')$'vuepress-theme-blog-material'\$g" example/blog/.vuepress/config.js
+          sed -i "s\$require.resolve('../../..')$'vuepress-theme-blog-material'\$g" example/blog/.vuepress/config.js
           zip -r template.zip example
-
       - name: Release
-        softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v1
         with:
           files: template.zip

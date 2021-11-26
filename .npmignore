@@ -1,5 +1,6 @@
 .DS_Store
 *.log
+.github
 
 # npm project
 node_modules/
@@ -12,4 +13,3 @@ example
 
 # vuepress develop
 .idea
-
