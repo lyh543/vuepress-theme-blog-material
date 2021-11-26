@@ -6,6 +6,9 @@ Material VuePress Blog Theme Powered By Vuetify.
 
 ## 在线 Demo
 
+目前主题仍处于开发中，近期准备使用 TypeScript + Vue 3 + Vuetify 3 + Vuepress 2 重写，切换到 VuePress 2 后，博客的文件结构可能会有变动。主题稳定以后会使用 `v1.0.0` 作为版本号。
+
+* [我的个人博客](https://blog.lyh543.cn)
 * [国内 Demo](https://vuepress-theme-blog-material.lyh543.cn/) [![Deploy VuePress Example](https://github.com/lyh543/vuepress-theme-blog-material/actions/workflows/deploy-template.yml/badge.svg)](https://github.com/lyh543/vuepress-theme-blog-material/actions/workflows/deploy-template.yml)
 * [国外 Demo](https://vuepress-theme-blog-material.netlify.app/) [![Netlify Status](https://api.netlify.com/api/v1/badges/1c1bdacd-89b2-4b60-a19d-58929dab5f16/deploy-status)](https://app.netlify.com/sites/vuepress-theme-blog-material/deploys)
 
@@ -115,3 +118,4 @@ yarn dev:example
 ## 已知问题
 
 * `npm run serve` 时不会生成 `sitemap.xml` 和 `rss.xml`，但是 `npm run build` 会生成。
+
