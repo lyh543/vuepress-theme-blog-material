@@ -1,32 +1,27 @@
-name: Deploy VuePress Example
+name: Deploy Example & Release Template
 
 on:
   push:
     tags:
-      - '*'
+      - 'v*.*.*'
+
+env:
+  TZ: Asia/Shanghai
 
 jobs:
-  build: # 一项叫做build的任务
+  deploy-demo:
+    runs-on: ubuntu-latest
 
-    runs-on: ubuntu-latest # 在最新版的Ubuntu系统下运行
-    
     steps:
-    - name: Checkout # 将仓库内master分支的内容下载到工作目录
-      uses: actions/checkout@v2 # 脚本来自 https://github.com/actions/checkout
-      with:
-        ref: 'template'
-      
-    - name: Use Node.js 16.x # 配置Node环境
-      uses: actions/setup-node@v1 # 配置脚本来自 https://github.com/actions/setup-node
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v1
       with:
         node-version: "16.x"
-  
+        cache: 'yarn'
+
     - name: Generate Static Websites
-      env:
-        TZ: Asia/Shanghai
-      run: |
-        npm i
-        npm run build
+      run: yarn && yarn build
 
     - name: Setup SSH env
       env:
@@ -47,3 +42,29 @@ jobs:
         rsync -av \
           dist/* \
           lyh543@lyh543.cn:/etc/caddy/html/vuepress-theme-blog-material/
+
+
+  upload-template:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+          cache: 'yarn'
+
+      # To test whether it can pass the build
+      - name: Generate Static Websites
+        run: yarn && yarn build
+
+      - name: Pack Template
+        run: |
+          sed -e "s\$require.resolve('../../..')$'vuepress-theme-blog-material'\$g" example/blog/.vuepress/config.js
+          zip -r template.zip example
+
+      - name: Release
+        softprops/action-gh-release@v1
+        with:
+          files: template.zip

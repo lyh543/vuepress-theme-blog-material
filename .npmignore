@@ -1,0 +1,15 @@
+.DS_Store
+*.log
+
+# npm project
+node_modules/
+dist
+package-lock.json
+yarn.lock
+
+# vuepress example
+example
+
+# vuepress develop
+.idea
+

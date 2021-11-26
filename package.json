@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-blog-material",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Material VuePress Blog Theme Powered By Vuetify",
   "main": "index.js",
   "homepage": "https://github.com/lyh543/vuepress-theme-blog-material/",
@@ -12,6 +12,8 @@
   ],
   "scripts": {
     "lint": "eslint --fix . --ext .js,.vue",
+    "dev:example": "vuepress dev example/blog",
+    "build:example": "vuepress build example/blog",
     "postversion": "npm publish --registry https://registry.npmjs.org && git push --follow-tags"
   },
   "author": {

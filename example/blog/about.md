@@ -66,8 +66,8 @@ VuePress 建议对图片使用相对路径，对文件使用绝对路径。但�
 title: Markdown 效果演示
 date: 2021-7-7 21:23:36
 tags:
-- markdown 
-image: https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg
+- markdown
+  image: https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg
 ---
 ```
 
