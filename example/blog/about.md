@@ -32,7 +32,7 @@ yarn
 ### 在本地测试运行
 
 ```shell
-yarn serve
+yarn dev
 ```
 
 ### 构建（以发布到网站上）
