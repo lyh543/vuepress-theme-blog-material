@@ -2,7 +2,7 @@
   "name": "vuepress-theme-blog-material",
   "version": "0.1.0-alpha.0",
   "description": "Material VuePress Blog Theme Powered By Vuetify",
-  "main": "lib/index.js",
+  "main": "lib/index.ts",
   "files": [
     "lib"
   ],
