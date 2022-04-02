@@ -1,0 +1,49 @@
+{
+  "name": "vuepress-theme-blog-material",
+  "version": "0.1.0-alpha.0",
+  "description": "Material VuePress Blog Theme Powered By Vuetify",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://github.com/lyh543/vuepress-theme-blog-material/",
+  "keywords": [
+    "vue",
+    "vuepress",
+    "vuetify",
+    "material design"
+  ],
+  "scripts": {
+    "lint": "eslint --fix . --ext .js,.vue,.ts && prettier -w .",
+    "dev:example": "vuepress dev example/blog",
+    "build:example": "vuepress build example/blog",
+    "postversion": "npm publish --registry https://registry.npmjs.org && git push --follow-tags"
+  },
+  "author": {
+    "name": "lyh543",
+    "url": "https://github.com/lyh543",
+    "email": "lyh543@outlook.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lyh543/vuepress-theme-blog-material"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "vuepress-plugin-blog2": "^2.0.0-beta.32"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "@vue/eslint-config-typescript": "^10.0.0",
+    "eslint": "^8.12.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "prettier": "^2.6.1",
+    "typescript": "^4.6.3",
+    "vuepress": "^2.0.0-beta.37"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.31",
+    "vuepress": "^2.0.0-beta.37"
+  }
+}
