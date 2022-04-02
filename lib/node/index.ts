@@ -13,6 +13,7 @@ module.exports = (themeConfig, app) => {
         getInfo: (page) => {
           page.frontmatter.title;
         },
+        hotReload: true,
       }),
     ],
 
