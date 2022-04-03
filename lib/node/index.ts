@@ -1,5 +1,5 @@
-const { path } = require('@vuepress/utils');
-const { blog } = require('vuepress-plugin-blog2');
+import { path } from '@vuepress/utils';
+import { blog } from 'vuepress-plugin-blog2';
 
 module.exports = (themeConfig, app) => {
   console.log({ themeConfig, app });
@@ -7,16 +7,21 @@ module.exports = (themeConfig, app) => {
     // 继承默认主题
     extends: '@vuepress/theme-default',
 
-    plugins: [
+    themePlugins: [
       blog({
-        filter: () => {},
-        getInfo: (page) => {
-          page.frontmatter.title;
-        },
+        filter: () => true,
+        getInfo: (page) => ({
+          title: page.frontmatter.title
+        }),
         hotReload: true,
       }),
     ],
 
-    layouts: path.resolve(__dirname, 'layouts'),
+    layouts: path.resolve(__dirname, '../client/layouts'),
+    clientAppEnhanceFiles: path.resolve(
+      __dirname,
+      '../client/clientAppEnhance.ts'
+    ),
+    clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.ts'),
   };
 };

@@ -1,7 +1,9 @@
-import { defineUserConfig } from 'vuepress';
+import { path } from '@vuepress/utils';
+import { defineUserConfig, ViteBundlerOptions } from 'vuepress';
 import type { DefaultThemeOptions } from 'vuepress';
+import vuetify from '@vuetify/vite-plugin';
 
-export default defineUserConfig<DefaultThemeOptions>({
+export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
   title: 'vuepress-theme-blog-material',
   description: '正在开发中的 Material Design 风格 Vuepress',
   port: 4000,
@@ -11,7 +13,15 @@ export default defineUserConfig<DefaultThemeOptions>({
       lang: 'zh-CN',
     },
   },
-  head: [['link', { rel: 'icon', href: '/theme/favicon.png' }]],
+  head: [
+    ['link', { rel: 'icon', href: '/theme/favicon.png' }],
+    [
+      'script',
+      {
+        src: `https://cdn.jsdelivr.net/npm/vuetify@3.0.0-beta.0/dist/vuetify.js`,
+      },
+    ],
+  ],
 
   // vuepress-v1
   // patterns: ['**/*.md', '**/*.vue'],
@@ -153,5 +163,25 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
 
     /****** The themeConfig above will be copied to config of @vuepress/plugin-blog ******/
+  },
+
+  // fixme: 无法在包内注入 vuetify，可能是 cache 的原因
+  // clientAppEnhanceFiles: [path.resolve(__dirname, './clientAppEnhance.ts')],
+
+  // vite 的配置
+  bundlerConfig: {
+    viteOptions: {
+      plugins: [
+        vuetify({
+          autoImport: true,
+        }),
+        [false],
+      ],
+      server: {
+        fs: {
+          allow: [path.resolve(__dirname, '../../../')],
+        },
+      },
+    },
   },
 });
