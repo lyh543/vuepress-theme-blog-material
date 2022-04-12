@@ -2,10 +2,7 @@
   <div>
     <v-container>
       <v-row class="justify-center">
-        <v-col
-          cols="12"
-          sm="9"
-        >
+        <v-col cols="12" sm="9">
           <article
             class="vuepress-blog-theme-content"
             itemscope
@@ -13,21 +10,15 @@
           >
             <v-card>
               <v-container>
-                <Content
-                  itemprop="articleBody"
-                  class="markdown-body"
-                />
-                <v-divider class="ma-4" />
+                <Content itemprop="articleBody" class="markdown-body" />
+                <v-divider v-if="$site.themeConfig.comment.service" class="ma-4" />
                 <Comment />
               </v-container>
             </v-card>
           </article>
         </v-col>
 
-        <v-col
-          v-if="!xs"
-          cols="3"
-        >
+        <v-col v-if="!xs" cols="3">
           <v-card style="position: fixed; max-width: 15%">
             <PostInfo />
           </v-card>
@@ -35,11 +26,7 @@
       </v-row>
     </v-container>
 
-
-    <v-bottom-sheet
-      v-if="xs"
-      v-model="sheet"
-    >
+    <v-bottom-sheet v-if="xs" v-model="sheet">
       <template #activator="{ on, attrs }">
         <v-fab-transition>
           <v-btn
@@ -68,7 +55,7 @@
 </template>
 
 <script>
-import {Comment} from '@vuepress/plugin-blog/lib/client/components'
+import Comment from "../components/Comment";
 import PostInfo from "../components/PostInfo";
 // import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
 
@@ -79,13 +66,13 @@ export default {
   },
   data() {
     return {
-      sheet: false
+      sheet: false,
     };
   },
   computed: {
     xs() {
       return this.$vuetify.breakpoint.xs;
-    }
-  }
-}
+    },
+  },
+};
 </script>

@@ -51,7 +51,7 @@ example.com {
 }
 ```
 
-最后一个解决方案是我最后采用的，就是白嫖 [Azure 的静态 Web 应用](https://azure.microsoft.com/zh-cn/services/app-service/static/)。Microsoft Learn 还写了一篇 [教程](https://docs.microsoft.com/zh-cn/learn/modules/publish-app-service-static-web-app-api/) 供大家参考。与 GitHub Pages 不同的是，Azure Static Web App 允许使用路由，只需要在开发 Vue 应用时，将以下 `route.json` 放在 `/public/` 目录下即可（抄 MS Learn 的作业真爽）。
+最后一个解决方案是我最后采用的，就是白嫖 [Azure 的静态 Web 应用](https://azure.microsoft.com/zh-cn/services/app-commentService/static/)。Microsoft Learn 还写了一篇 [教程](https://docs.microsoft.com/zh-cn/learn/modules/publish-app-service-static-web-app-api/) 供大家参考。与 GitHub Pages 不同的是，Azure Static Web App 允许使用路由，只需要在开发 Vue 应用时，将以下 `route.json` 放在 `/public/` 目录下即可（抄 MS Learn 的作业真爽）。
 
 ```json
 {
