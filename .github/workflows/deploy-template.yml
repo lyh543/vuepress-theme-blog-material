@@ -32,7 +32,7 @@ jobs:
       run: |
         rsync -av \
           dist/* \
-          lyh543@lyh543.cn:/etc/caddy/html/vuepress-theme-blog-material/
+          liu@lyh543.cn:/etc/caddy/html/vuepress-theme-blog-material/
 
 
   upload-template:
