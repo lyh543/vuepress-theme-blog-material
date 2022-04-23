@@ -22,11 +22,11 @@ import ErrorAlert from "../global-components/ErrorAlert";
 export default {
   components: {ErrorAlert},
   data: () => ({
-    msg: '404 Not Found'
+    msg: '404 Not Found. Would you like to search what you are looking for? ↗↗↗'
   }),
   created() {
     const path = this.$route.path;
-    this.msg += ': ' + decodeURI(path);
+    this.msg = `404 Not Found: ${decodeURI(path)}.\nWould you like to search what you are looking for? ↗↗↗`;
   }
 }
 </script>

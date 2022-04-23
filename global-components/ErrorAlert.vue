@@ -26,7 +26,7 @@
           :type="type"
           v-bind="$attrs"
         >
-          {{ msg }}
+          <div v-html="msg.replace('\n', '<br>')" />
         </v-alert>
       </v-col>
     </v-row>
