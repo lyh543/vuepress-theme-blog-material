@@ -1,6 +1,6 @@
 const removeMd = require("remove-markdown");
 const path = require("path");
-const {pick, timeTransformer, getFirstMarkdownHeading, getFileNameWithoutExtension} = require("./utils/themeConfig");
+const { pick, timeTransformer, getFirstMarkdownHeading, getFileNameWithoutExtension, sortPages } = require("./utils/themeConfig");
 
 module.exports = themeConfig => {
   const {hostname} = themeConfig;
@@ -9,7 +9,7 @@ module.exports = themeConfig => {
   // https://vuepress-plugin-blog.billyyyyy3320.com/config/
   const defaultBlogPluginOptions = {
     sitemap: {hostname},
-    feed: {canonical_base: hostname},
+    feed: {canonical_base: hostname, sort: sortPages},
   };
   // move config from themeConfig to @vuepress/theme-plugin-blog
   const properties = [

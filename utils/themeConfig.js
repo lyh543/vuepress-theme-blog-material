@@ -48,9 +48,19 @@ function timeTransformer(timestamp) {
   return moment(timestamp).format('YYYY-MM-DD HH:mm:ss');
 }
 
+/**
+ * sort pages from newest to oldest
+ * @param pages
+ * @returns pages
+ */
+function sortPages(pages) {
+  return pages.sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
 module.exports = {
   getFileNameWithoutExtension,
   getFirstMarkdownHeading,
   pick,
-  timeTransformer
+  timeTransformer,
+  sortPages
 };
