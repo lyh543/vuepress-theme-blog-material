@@ -1,30 +1,28 @@
 <template>
   <div>
-    <v-container>
-      <v-row class="justify-center">
-        <v-col cols="12" sm="9">
-          <article
-            class="vuepress-blog-theme-content"
-            itemscope
-            itemtype="https://schema.org/BlogPosting"
-          >
-            <v-card>
-              <v-container>
-                <Content itemprop="articleBody" class="markdown-body" />
-                <v-divider v-if="$site.themeConfig.comment.service" class="ma-4" />
-                <Comment />
-              </v-container>
-            </v-card>
-          </article>
-        </v-col>
-
-        <v-col v-if="!xs" cols="3">
-          <v-card style="position: fixed; max-width: 15%">
-            <PostInfo />
+    <container class="article-column-container">
+      <div class="article-column">
+        <article
+          class="vuepress-blog-theme-content"
+          itemscope
+          itemtype="https://schema.org/BlogPosting"
+        >
+          <v-card>
+            <v-container>
+              <Content itemprop="articleBody" class="markdown-body" />
+              <v-divider v-if="$site.themeConfig.comment.service" class="ma-4" />
+              <Comment />
+            </v-container>
           </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
+        </article>
+      </div>
+
+      <div v-if="!xs" cols="3">
+        <v-card style="position: fixed; max-width: 15%">
+          <PostInfo />
+        </v-card>
+      </div>
+    </container>
 
     <v-bottom-sheet v-if="xs" v-model="sheet">
       <template #activator="{ on, attrs }">
@@ -76,3 +74,23 @@ export default {
   },
 };
 </script>
+
+<style>
+.article-column-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.article-column {
+  /* for mobile */
+  width: calc(100% - 20px);
+
+  /* for desktop */
+  @media (min-width: 600px) {
+    width: 750px;
+  }
+}
+</style>
