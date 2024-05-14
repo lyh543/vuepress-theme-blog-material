@@ -17,7 +17,7 @@
         </article>
       </div>
 
-      <div v-if="!xs" cols="3">
+      <div v-if="!xs" style="width: 15%">
         <v-card style="position: fixed; max-width: 15%">
           <PostInfo />
         </v-card>
